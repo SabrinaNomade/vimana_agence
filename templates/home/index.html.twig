@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<section class="hero">
+    <div class="carousel">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <img src="/assets/images/chicago-94510_1280 (1).jpg" alt="Image 1">
+            <div class="carousel-caption">
+                <h1>Vimana Paris</h1>
+                <p>Votre partenaire pour des événements inoubliables.</p>
+                <a href="#contact" class="hero-button">Contactez-nous</a>
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <img src="/assets/images/desk-5020801_1280.jpg" alt="Image 2">
+            <div class="carousel-caption">
+                <h1>Une expérience unique</h1>
+                <p>Transformez vos idées en réalité.</p>
+                <a href="#contact" class="hero-button">Contactez-nous</a>
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+            <img src="/assets/images/live-music-2219036_1280.jpg" alt="Image 3">
+            <div class="carousel-caption">
+                <h1>Événements sur mesure</h1>
+                <p>Faites de votre événement un succès.</p>
+                <a href="#contact" class="hero-button">Contactez-nous</a>
+            </div>
+        </div>
+
+        <!-- Dots (Indicators) -->
+        <div class="carousel-indicators">
+            <span class="indicator active" data-slide="0"></span>
+            <span class="indicator" data-slide="1"></span>
+            <span class="indicator" data-slide="2"></span>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+   <script src="{{ asset('js/script.js') }}"></script>
+
+{% endblock %}
+
+
+
+ 
+
+
