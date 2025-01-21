@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Vimana Paris{% endblock %}</title>
+      <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
+ <!-- Assurez-vous que le chemin est correct -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+   <nav class="navbar">
+    <div class="logo">
+        <a href="/">
+            <img src="assets/images/logo-v.png" alt="Logo Agence">
+        </a>
+        <span class="brand-name">Vimana Paris</span>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">
+        ☰
+    </button>
+    <ul class="nav-links">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/expertise">Notre Expertise</a></li>
+        <li><a href="/realisations">Nos Réalisations</a></li>
+        <li><a href="/about">Qui sommes-nous</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/inscription">Inscription</a></li>
+        <li><a href="/connexion">Connexion</a></li>
+    </ul>
+</nav>
+
+
+    <!-- Insérer ici le bloc hero -->
+    {% block hero %}{% endblock %}
+
+    <!-- Le bloc de contenu dynamique pour chaque page -->
+    {% block content %}{% endblock %}
+
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+</body>
+</html>

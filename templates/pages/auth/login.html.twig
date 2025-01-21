@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+  <!-- Section Connexion -->
+  <div class="auth-right">
+    <h1>Déjà membre ?</h1>
+    <p>Connectez-vous pour accéder à votre compte.</p>
+
+    {# Affichage de l'erreur si elle existe #}
+    {% if connexion.error %}
+      <div class="alert alert-danger">
+        {{ connexion.error }}
+      </div>
+    {% endif %}
+
+    <form action="{{ path('app_login') }}" method="post" class="auth-form">
+        <div class="form-group">
+            <label for="login-email">E-mail</label>
+            {# Remplir le champ email avec l'email du dernier essai de connexion #}
+            <input type="email" id="login-email" name="_username" placeholder="Votre e-mail" value="{{ connexion.dernierEmail }}" required>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Mot de passe</label>
+            <input type="password" id="login-password" name="_password" placeholder="Votre mot de passe" required>
+        </div>
+        <button type="submit" class="auth-button">Connexion</button>
+    </form>
+  </div>
+{% endblock %}
+
