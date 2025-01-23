@@ -1,9 +1,9 @@
 <?php
-// src/Controller/AuthController.php
+
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegisterType;
+use App\Form\RegistrationType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +13,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class AuthController extends AbstractController
+class RegistrationController extends AbstractController
 {
     // Route pour l'inscription
     #[Route('/inscription', name: 'app_register')]
@@ -26,22 +26,28 @@ class AuthController extends AbstractController
         $user = new User(); // Crée un nouvel utilisateur
 
         // Crée le formulaire d'inscription basé sur la classe RegisterType
-        $form = $this->createForm(RegisterType::class, $user);
+        $form = $this->createForm(RegistrationType::class, $user);
 
         // Gère la requête HTTP et lie les données au formulaire
         $form->handleRequest($request);
 
         // Si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $userExistant = $userRepository->findOneBy(['email' => $user->getEmail()]);
+            // Nettoyer l'email avant de vérifier s'il existe
+            $cleanEmail = trim($user->getEmail());
+            $user->setEmail($cleanEmail);
+        
+            // Vérification si l'email existe déjà
+            $userExistant = $userRepository->findOneBy(['email' => $cleanEmail]);
 
             if ($userExistant) {
                 // Ajouter un message flash et rediriger
                 $this->addFlash('error', 'Cet utilisateur existe déjà.');
-                return $this->redirectToRoute('app_register');
+                return $this->render('pages/registration/register.html.twig', [
+                    'form' => $form->createView(),
+                ]);
             }
-            // Encode le mot de passe en utilisant UserPasswordHasherInterface
+            // Encode le mot de passe
             $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassword);
 
@@ -52,36 +58,35 @@ class AuthController extends AbstractController
             // Ajoute un message de succès
             $this->addFlash('success', 'Inscription réussie !');
 
-            // Redirige vers la page d'accueil ou la page de connexion
-            return $this->redirectToRoute('app_home');
+            // Redirige vers la page de connexion
+            return $this->redirectToRoute('app_connexion');
         }
 
         // Si la méthode est GET ou si le formulaire n'est pas valide, on rend la vue
-        return $this->render('pages/auth/register.html.twig', [
-            'form' => $form->createView(), // Passe la vue du formulaire au template
+        return $this->render('pages/registration/register.html.twig', [
+            'form' => $form->createView(),
         ]);
-
     }
 
+    // Route pour la connexion
     #[Route('/connexion', name: 'app_connexion')]
-public function login(AuthenticationUtils $authenticationUtils): Response
-{
-    // Vérifiez si l'utilisateur est déjà connecté
-    if ($this->getUser()) {
-        return $this->redirectToRoute('app_home');
+    public function login(AuthenticationUtils $authenticationUtils): Response
+    {
+        // Vérifiez si l'utilisateur est déjà connecté
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+
+        // Obtenez l'erreur d'authentification, s'il y en a
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        // Renvoyez la vue avec les erreurs et le dernier nom d'utilisateur saisi
+        return $this->render('pages/registration/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error,
+        ]);
     }
-
-    // Obtenez l'erreur d'authentification, s'il y en a
-    $error = $authenticationUtils->getLastAuthenticationError();
-    $lastUsername = $authenticationUtils->getLastUsername();
-
-    // Renvoyez la vue avec les erreurs et le dernier nom d'utilisateur saisi
-    return $this->render('pages/auth/login.html.twig', [
-        'last_username' => $lastUsername,
-        'error' => $error,
-    ]);
-}
-
 
     // Route pour la déconnexion (facultatif, géré automatiquement par Symfony)
     #[Route('/deconnexion', name: 'app_deconnexion')]
@@ -89,5 +94,4 @@ public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // Symfony gère déjà la déconnexion, cette méthode peut être vide
     }
-
 }

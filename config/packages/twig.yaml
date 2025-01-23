@@ -1,11 +1,9 @@
-# config/packages/twig.yaml
 twig:
-    # Définition d'un motif de nom de fichier pour Twig, utile si vous souhaitez appliquer un filtre global
-    file_name_pattern: '*.twig'
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    cache: '%kernel.cache_dir%/twig'
+    # Ajoute des globals si nécessaire
+    globals:
+        app_name: 'Vimana Paris'
 
-    # Autres configurations de Twig peuvent être ici, par exemple le cache, les chemins, etc.
-
-when@test:
-    twig:
-        # Active strict_variables dans l'environnement 'test'
-        strict_variables: true
