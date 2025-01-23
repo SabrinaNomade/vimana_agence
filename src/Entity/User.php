@@ -7,27 +7,65 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+#[ORM\Table(name: 'user')]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180, nullable: false)]
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 50, nullable: false)]
-    private ?string $pseudo = null;
+    #[ORM\Column(type: 'json')]
+    private array $roles = [];
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'string')]
     private ?string $password = null;
 
-    #[ORM\Column(length: 100, nullable: true)]  // Nouvelle colonne pour firstName
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $firstName = null;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $lastName = null;
+
+    #[ORM\Column(type: 'string', length: 15, nullable: true)]
+    private ?string $phone = null;
+
+    // Méthodes UserInterface et PasswordAuthenticatedUserInterface
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+    public function getRoles(): array
+    {
+        // Garantie qu'un utilisateur a au moins ROLE_USER
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+    
+        return array_unique($roles);
+    }
+    
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+    public function eraseCredentials(): void
+    {
+        // Si tu stockes des données sensibles temporaires, nettoie-les ici.
+    }
+
+    // Getters et setters pour les autres propriétés
     public function getId(): ?int
     {
         return $this->id;
@@ -38,57 +76,53 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): static
+    public function setEmail(string $email): self
     {
         $this->email = $email;
+
         return $this;
     }
 
-    public function getPseudo(): ?string
-    {
-        return $this->pseudo;
-    }
-
-    public function setPseudo(string $pseudo): static
-    {
-        $this->pseudo = $pseudo;
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): static
-    {
-        $this->password = $password;
-        return $this;
-    }
-
-    public function getFirstName(): ?string  // Getter pour firstName
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
-    public function setFirstName(string $firstName): static  // Setter pour firstName
+    public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
+
         return $this;
     }
 
-    public function getUserIdentifier(): string
+    public function getLastName(): ?string
     {
-        return (string) $this->email;
+        return $this->lastName;
     }
 
-    public function getRoles(): array
+    public function setLastName(string $lastName): self
     {
-        return ['ROLE_USER'];
+        $this->lastName = $lastName;
+
+        return $this;
     }
 
-    public function eraseCredentials(): void
+    public function getPhone(): ?string
     {
-        // Supprime les informations sensibles
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
     }
 }
