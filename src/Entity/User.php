@@ -1,65 +1,36 @@
 <?php
-// src/Entity/User.php
+
 namespace App\Entity;
 
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- */
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $firstName;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $lastName;
+    #[ORM\Column(length: 180, nullable: false)]
+    private ?string $email = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
-    private $email;
+    #[ORM\Column(length: 50, nullable: false)]
+    private ?string $pseudo = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $password;
+    #[ORM\Column]
+    private ?string $password = null;
 
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $roles = [];
+    #[ORM\Column(length: 100, nullable: true)]  // Nouvelle colonne pour firstName
+    private ?string $firstName = null;
 
-    // Getters et setters pour firstName, lastName, email, et password...
-
-    public function getFirstName(): ?string
+    public function getId(): ?int
     {
-        return $this->firstName;
-    }
-
-    public function setFirstName(string $firstName): self
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName(string $lastName): self
-    {
-        $this->lastName = $lastName;
-
-        return $this;
+        return $this->id;
     }
 
     public function getEmail(): ?string
@@ -67,10 +38,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(string $email): static
     {
         $this->email = $email;
+        return $this;
+    }
 
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): static
+    {
+        $this->pseudo = $pseudo;
         return $this;
     }
 
@@ -79,47 +60,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
     }
 
-    /**
-     * Retourne les rôles de l'utilisateur.
-     */
-    public function getRoles(): array
+    public function getFirstName(): ?string  // Getter pour firstName
     {
-        // Retourner les rôles de l'utilisateur (ajoutez ROLE_USER par défaut)
-        return array_merge($this->roles, ['ROLE_USER']);
+        return $this->firstName;
     }
 
-    /**
-     * Retourne l'identifiant de l'utilisateur (email ici).
-     */
+    public function setFirstName(string $firstName): static  // Setter pour firstName
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
+
     public function getUserIdentifier(): string
     {
-        return $this->email;
+        return (string) $this->email;
     }
 
-    /**
-     * Efface les informations sensibles, comme le mot de passe en clair.
-     */
+    public function getRoles(): array
+    {
+        return ['ROLE_USER'];
+    }
+
     public function eraseCredentials(): void
     {
-        // Par exemple : $this->plainPassword = null;
-    }
-
-    /**
-     * Définit les rôles de l'utilisateur.
-     */
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
+        // Supprime les informations sensibles
     }
 }
-
-

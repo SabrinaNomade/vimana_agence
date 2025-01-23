@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AproposController extends AbstractController
 {
-    #[Route('/about', name: 'apropos')] // Nom de la route ajusté
+    #[Route('/apropos', name: 'app_apropos')] // Nom de la route ajusté
     public function index(): Response
     {
         return $this->render('pages/apropos/index.html.twig'); // Vérifie le chemin du fichier Twig
