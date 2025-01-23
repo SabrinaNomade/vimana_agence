@@ -1,32 +1,39 @@
+{# templates/pages/auth/login.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Connexion</h1>
 
-{% block content %}
-  <!-- Section Connexion -->
-  <div class="auth-right">
-    <h1>Déjà membre ?</h1>
-    <p>Connectez-vous pour accéder à votre compte.</p>
-
-    {# Affichage de l'erreur si elle existe #}
-    {% if connexion.error %}
-      <div class="alert alert-danger">
-        {{ connexion.error }}
-      </div>
+    {# Affichage des erreurs de connexion si présentes #}
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
     {% endif %}
 
-    <form action="{{ path('app_login') }}" method="post" class="auth-form">
+    {# Formulaire de connexion #}
+    <form action="{{ path('app_connexion') }}" method="post">
+        {{ form_start(form) }}
+        
         <div class="form-group">
-            <label for="login-email">E-mail</label>
-            {# Remplir le champ email avec l'email du dernier essai de connexion #}
-            <input type="email" id="login-email" name="_username" placeholder="Votre e-mail" value="{{ connexion.dernierEmail }}" required>
+            <label for="{{ form.email.vars.id }}">E-mail :</label>
+            {{ form_widget(form.email, { 'attr': {'placeholder': 'Votre adresse e-mail', 'class': 'form-control'} }) }}
         </div>
-        <div class="form-group">
-            <label for="login-password">Mot de passe</label>
-            <input type="password" id="login-password" name="_password" placeholder="Votre mot de passe" required>
-        </div>
-        <button type="submit" class="auth-button">Connexion</button>
-    </form>
-  </div>
-{% endblock %}
 
+        <div class="form-group">
+            <label for="{{ form.password.vars.id }}">Mot de passe :</label>
+            {{ form_widget(form.password, { 'attr': {'placeholder': 'Votre mot de passe', 'class': 'form-control'} }) }}
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+        </div>
+
+        {{ form_end(form) }}
+    </form>
+
+    {# Lien vers l'inscription pour les utilisateurs non inscrits #}
+    <div class="mt-3">
+        <a href="{{ path('app_register') }}">Pas encore inscrit ? Créez un compte.</a>
+    </div>
+{% endblock %}

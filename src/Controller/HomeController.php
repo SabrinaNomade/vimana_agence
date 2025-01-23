@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route; // Importation des annotations (
 // Vous pouvez remplacer cette annotation par l'attribut PHP
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'home')]  // Attribut PHP pour la route
+    #[Route('/', name: 'app_home')]  // Attribut PHP pour la route
     public function index(): Response
     {
         return $this->render('home/index.html.twig');  // Utilisation de la bonne structure de chemin

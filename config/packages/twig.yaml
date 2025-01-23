@@ -1,6 +1,11 @@
+# config/packages/twig.yaml
 twig:
+    # Définition d'un motif de nom de fichier pour Twig, utile si vous souhaitez appliquer un filtre global
     file_name_pattern: '*.twig'
+
+    # Autres configurations de Twig peuvent être ici, par exemple le cache, les chemins, etc.
 
 when@test:
     twig:
+        # Active strict_variables dans l'environnement 'test'
         strict_variables: true
