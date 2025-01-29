@@ -7,6 +7,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
 
 class LoginType extends AbstractType
 {
@@ -18,6 +20,11 @@ class LoginType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Votre adresse e-mail',
                     'class' => 'form-control', // Ajout d'une classe CSS pour le style
+             
+                ],
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez entrer une adresse e-mail.']),
+                    new Email(['message' => 'Veuillez entrer une adresse e-mail valide.']),
                 ],
             ])
             ->add('password', PasswordType::class, [
@@ -26,6 +33,10 @@ class LoginType extends AbstractType
                     'placeholder' => 'Votre mot de passe',
                     'class' => 'form-control', // Ajout d'une classe CSS pour le style
                 ],
+
+                'constraints' => [
+            new NotBlank(['message' => 'Veuillez entrer un mot de passe.']),
+        ],
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Se connecter',
