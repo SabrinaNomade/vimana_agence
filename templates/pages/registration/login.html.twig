@@ -3,29 +3,21 @@
 {% block title %}Connexion{% endblock %}
 
 {% block content %}
-    <h1>Connexion</h1>
+    <div class="form-container"> <!-- Conteneur flex pour aligner à gauche -->
+        <form action="{{ path('app_connexion') }}" method="post">
+            <div class="form-group">
+                <label for="email">Adresse Email</label>
+                <input type="text" id="email" name="email" value="{{ last_username }}" required="required" class="form-control" />
+            </div>
 
-    {# Affichage des messages d'erreur d'authentification #}
-    {% if error %}
-        <div class="alert alert-danger">
-            {{ error.messageKey|trans(error.messageData, 'security') }}
-        </div>
-    {% endif %}
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required="required" class="form-control" />
+            </div>
 
-    {# Formulaire de connexion #}
-    <form action="{{ path('app_connexion') }}" method="post">
-        <div class="form-group">
-            <label for="username">Adresse Email</label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" />
-        </div>
-
-        <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="_password" required="required" class="form-control" />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Se connecter</button>
-    </form>
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+    </div>
 
     <p>Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">S'inscrire</a></p>
 
