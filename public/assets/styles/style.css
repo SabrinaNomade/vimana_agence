@@ -1,16 +1,19 @@
-
 /* Global Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Évite les décalages */
+
+    }
     
-}
+    
+
 
 /* Barre de navigation */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     background: linear-gradient(to right, #3d0565, #6e0108);
     padding: 0.5rem 1rem;
@@ -26,6 +29,7 @@ body {
     align-items: center;
     gap: 0.5rem;
 }
+
 .logo img {
     width: 100px;
     height: auto;
@@ -33,7 +37,7 @@ body {
 }
 .brand-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #ffffff;
     font-weight: bold;
     text-transform: uppercase;
@@ -47,6 +51,14 @@ body {
     border: none;
     color: white;
     cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: auto; /* Pousse le bouton à droite */
+    z-index: 1001;
+   
+    
 }
 .nav-links {
     list-style: none;
@@ -56,6 +68,7 @@ body {
     padding: 0;
     flex-grow: 1; /* Les liens occupent l'espace disponible */
     justify-content: flex-end; /* Les liens se placent à droite */
+    
 }
 
 .nav-links a {
@@ -66,12 +79,18 @@ body {
 }
 .nav-links a:hover {
     color: #ffffff;
+    
 }
+.nav-links.active {
+    display: flex !important;
+}
+
 
 /* Section Hero */
 .hero {
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Empêche que le carrousel soit trop grand sur les grands écrans */
+    
 }
 
 .carousel {
@@ -93,11 +112,11 @@ body {
 
 .carousel img {
     width: 100%;
-    height: 100%;
+    height:  100%;
     object-fit: cover;
 }
 
-/* Overlay for better text visibility */
+/* Overlay pour améliorer la visibilité du texte */
 .carousel-item::before {
     content: '';
     position: absolute;
@@ -105,40 +124,59 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+ 
     z-index: 1;
 }
 
-/* Carousel Captions */
+/* Captions du carousel */
 .carousel-caption {
     position: absolute;
     bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: white;
+    color: rgb(255, 255, 255);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     z-index: 2;
 }
+
 .carousel-caption h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
 }
+
 .carousel-caption p {
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
-.carousel-caption .hero-button {
-    background-color: #7720b1;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    text-decoration: none;
+
+/* Conteneur du bouton */
+.contact {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Style du bouton */
+.btn-contact {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
     color: white;
-    transition: background-color 0.3s ease;
+    background: linear-gradient(to right, #6e0108, #3d0565); /* Dégradé inverse */
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
-.carousel-caption .hero-button:hover {
-    background-color: #1a0230;
+
+/* Effet au survol */
+.btn-contact:hover {
+    transform: scale(1.1);
+    background: linear-gradient(to right, #3d0565, #6e0108);
 }
+
+
 
 /* Indicateurs de pagination */
 .carousel-indicators {
@@ -150,6 +188,7 @@ body {
     gap: 10px;
     z-index: 3;
 }
+
 .indicator {
     width: 12px;
     height: 12px;
@@ -158,38 +197,69 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .indicator.active {
     background-color: white;
 }
 
 .indicator:hover {
-    background-color: white; /* Change la couleur de fond au survol */
-    transform: scale(1.2);   /* Agrandir un peu au survol */
+    background-color: white; 
+    transform: scale(1.2); 
 }
 
 /* Responsive Design */
 
 /* Tablettes et petits écrans (moins de 768px) */
 @media (max-width: 768px) {
+    
     .navbar {
         flex-direction: column;
         align-items: flex-start;
-        padding: 1rem;
-
-    }
+        padding: 1rem; }
     
     .nav-toggle {
         display: block; /* Afficher le bouton burger */
     }
     .nav-links {
-        display: none; /* Cacher les liens par défaut */
+        display: none;
         flex-direction: column;
-        gap: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
-        padding: 1rem 0;
-        background-color: #3d0565;
+        background: #3d0565;
+        text-align: center;
+        align-items: center; /* Centre les éléments */
+        padding-top: 10px;
     }
-   
+    .carousel-caption {
+        bottom: 10%; /* Ajuste la position du texte sur l'image */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.5rem; /* Taille du titre plus petite */
+    }
+
+    .carousel-caption p {
+        font-size: 1rem; /* Taille du paragraphe plus petite */
+    }
+
+    .carousel-button {
+        font-size: 1rem; /* Taille des boutons ajustée */
+        padding: 0.5rem 1rem; /* Ajuste les tailles de padding */
+    }
+    .hero {
+        height: 50vh; /* Plus petit sur mobile */
+        max-height: 400px;
+    }
+
+    .carousel img {
+        height: 50vh; 
+        max-height: 400px;/* Réduit la hauteur des images pour les petits écrans */
+        object-fit: cover; /* Assurez-vous que les images remplissent l'espace sans distorsion */
+    }
 
     .nav-links.active {
         display: flex; /* Afficher les liens quand le menu burger est activé */
@@ -201,15 +271,7 @@ body {
     .brand-name {
         font-size: 1.8rem;
     }
-    .carousel-caption {
-        bottom: 15%;
-    }
-    .carousel-caption h1 {
-        font-size: 2rem;
-    }
-    .carousel-caption p {
-        font-size: 1rem;
-    }
+  
     .hero-button {
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
@@ -218,6 +280,7 @@ body {
         width: 10px;
         height: 10px;
     }
+    
 
 
 /* Téléphones (moins de 480px) */
@@ -251,5 +314,14 @@ body {
     }
     .carousel-indicators {
         bottom: 10px;
+    }
+
+    .nav-links {
+        width: 100%;
+        background: rgba(61, 5, 101, 0.9);
+    }
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 10px;
     }
 }
