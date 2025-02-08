@@ -11,5 +11,5 @@ class RealisationsController extends AbstractController
     #[Route('/realisations', name: 'app_realisations')]  
 public function index(): Response
 {
-    return $this->render('');
+    return $this->render('pages/realisations/index.html.twig');
 }}

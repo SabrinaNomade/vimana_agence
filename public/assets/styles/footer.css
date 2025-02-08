@@ -1,75 +1,56 @@
-/* Styles de base pour le footer */
+/* Assurer que le footer prend toute la largeur et une hauteur minimale */
 footer {
-    position: relative; /* Assure que le footer contient la superposition */
-    background-color: #18011f; /* Couleur de fond du footer */
-    color: white;
-    padding: 50px 20px; /* Espacement interne */
-    overflow: hidden; /* Empêche tout dépassement visuel */
-    footer {
-        min-height: 200px; /* Ajuste en fonction de ton design */
-        font-family: 'Cinzel', serif;
-
-    }
-    
-}
-
-/* Superposition sombre */
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 100%;
-    background-color: rgba(20, 3, 53, 0.6); /* Couche sombre */
-    z-index: 1; /* Position derrière le contenu */
+    background-color: #18011f;
+    color: white;
+    padding: 30px 15px;
+    min-height: 150px; /* Ajuste selon le besoin */
+    font-family: 'Cinzel', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Conteneur du contenu du footer */
-footer div.container {
-    position: relative; /* Pour que le contenu soit au-dessus de la superposition */
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
+/* Empêcher l'effet d'écrasement du contenu */
+html, body {
+    min-height: 100vh; /* Force le body à occuper toute la hauteur */
+    display: flex;
+    flex-direction: column;
+}
+
+body > *:not(footer) {
+    flex-grow: 1; /* Le contenu s'étend pour pousser le footer en bas */
+}
+
+/* Conteneur du footer */
+footer .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
-    gap: 20px; /* Espacement entre les sections */
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
 }
 
-/* Logo */
-footer div.logo {
-    text-align: left;
+/* Ajuster la taille des éléments du footer */
+footer .footer-logo img {
+    height: 100px;
+    width: auto;
 }
 
-footer div.logo img {
-    height: 200px;
-    width: 300px;
-    object-fit: contain;
-    margin: 0 auto;
-    display: block;
-}
-
-/* Sections : Liens sociaux et Newsletter */
-footer div.social-links,
-footer div.newsletter {
+footer .footer-social-links,
+footer .footer-newsletter {
     flex: 1;
-    min-width: 200px;
-    text-align: left;
+    min-width: 250px;
 }
 
-footer h4 {
-    font-family: 'Cinzel', sans-serif;
-    font-size: 1.5rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
+/* Centrer et espacer les liens */
 footer ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 footer ul li {
@@ -79,7 +60,7 @@ footer ul li {
 footer ul li a {
     text-decoration: none;
     color: white;
-    font-size: 1rem;
+    font-size: 2rem;
     transition: color 0.3s ease;
 }
 
@@ -87,16 +68,41 @@ footer ul li a:hover {
     color: #6e0108;
 }
 
-/* Icônes sociales */
-footer ul.social-icons {
-    display: flex;
-    gap: 10px;
+/* Responsive - Ajustement sur mobile */
+@media screen and (max-width: 768px) {
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    footer {
+        padding: 20px 10px;
+    }
+    footer .footer-logo img {
+        height: 80px;
+    }
+
+    footer .footer-social-links,
+    footer .footer-newsletter {
+        width: 100%;
+    }
+    footer ul li a {
+        font-size: 1.5rem; /* Ajuste pour les tablettes */
+    }
 }
 
-footer ul.social-icons img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-}
+@media screen and (max-width: 480px) {
+    footer {
+        padding: 15px 5px;
+    }
 
-/*
+    footer .footer-logo img {
+        height: 70px;
+    }
+
+    footer ul li a {
+        font-size: 1.2rem; /* Ajuste pour les mobiles */
+    }
+    }
+

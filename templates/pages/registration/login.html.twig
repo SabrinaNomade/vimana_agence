@@ -3,6 +3,15 @@
 {% block title %}Connexion{% endblock %}
 
 {% block content %}
+    {# Affichage des flash messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     <div class="form-container"> <!-- Conteneur flex pour aligner à gauche -->
         <form action="{{ path('app_connexion') }}" method="post">
             <div class="form-group">
@@ -20,7 +29,6 @@
     </div>
 
     <p>Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">S'inscrire</a></p>
-
     <p>
         <a href="{{ path('app_home') }}">Retour à l'accueil</a>
     </p>
