@@ -25,6 +25,16 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Se connecter</button>
+            {% if app.user %}
+    <form action="{{ path('app_deconnexion') }}" method="post">
+    <button type="submit" class="btn btn-danger mt-3" style="width: 100%; font-weight: bold;">
+        Déconnexion
+    </button>
+</form>
+
+    </form>
+{% endif %}
+
         </form>
     </div>
 

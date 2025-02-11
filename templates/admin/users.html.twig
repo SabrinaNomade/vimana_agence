@@ -1,0 +1,28 @@
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+{% block content %}
+{% block body %}
+    <h1>Utilisateurs inscrits</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Rôle</th>
+            <th>Actif</th>
+            <th>Actions</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles|json_encode }}</td>
+                <td>{{ user.isActive ? '✅' : '❌' }}</td>
+                <td>
+                    <a href="{{ path('admin_toggle_user', {id: user.id}) }}">🟢/🔴</a>
+                    <a href="{{ path('admin_delete_user', {id: user.id}) }}" onclick="return confirm('Supprimer cet utilisateur ?')">🗑</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

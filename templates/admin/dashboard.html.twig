@@ -1,0 +1,36 @@
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Bienvenue sur le tableau de bord</h1>
+
+        <h2>Derniers utilisateurs inscrits</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Date d'inscription</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in recentUsers %}
+                    <tr>
+                        <td>{{ user.firstName }} {{ user.lastName }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.createdAt|date('Y-m-d H:i') }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">Aucun utilisateur trouvé</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+       
+    </div>
+{% endblock %}

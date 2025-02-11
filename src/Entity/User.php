@@ -34,6 +34,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 15, nullable: true)]
     private ?string $phone = null;
 
+    #[ORM\Column(type: 'boolean')]
+    private bool $isActive = true;  // Par défaut, l'utilisateur est actif
+
+    // Ajout de la colonne createdAt
+    #[ORM\Column(type: 'datetime', options: ['default' => 'CURRENT_TIMESTAMP'])]
+    private \DateTimeInterface $createdAt;
+     
+
     // Méthodes UserInterface et PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
@@ -125,4 +133,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function isActive(): bool
+{
+    return $this->isActive;
+}
+
+public function setIsActive(bool $isActive): self
+{
+    $this->isActive = $isActive;
+    return $this;
+}
+public function __construct()
+{
+    // Initialisation de createdAt à la date actuelle
+    $this->createdAt = new \DateTime();
+}
+
+// Getters et Setters pour createdAt
+public function getCreatedAt(): \DateTimeInterface
+{
+    return $this->createdAt;
+}
+
+public function setCreatedAt(\DateTimeInterface $createdAt): self
+{
+    $this->createdAt = $createdAt;
+
+    return $this;
+}
+
 }
