@@ -27,7 +27,7 @@ final class Version20250210182328 extends AbstractMigration
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user DROP is_active, CHANGE roles roles LONGTEXT NOT NULL COLLATE `utf8mb4_bin`, CHANGE phone phone VARCHAR(15) DEFAULT \'NULL\'');
+        $this->addSql('ALTER TABLE user DROP is_active,  CHANGE phone phone VARCHAR(15) DEFAULT \'NULL\'');
         $this->addSql('ALTER TABLE user RENAME INDEX uniq_8d93d649e7927c74 TO UNIQ_IDENTIFIER_EMAIL');
     }
 }
