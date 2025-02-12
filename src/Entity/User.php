@@ -40,7 +40,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     // Ajout de la colonne createdAt
     #[ORM\Column(type: 'datetime', options: ['default' => 'CURRENT_TIMESTAMP'])]
     private \DateTimeInterface $createdAt;
-     
+
+    // Nouveau champ pour le token de confirmation
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $confirmationToken = null;
 
     // Méthodes UserInterface et PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
@@ -52,6 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->password;
     }
+
     public function getRoles(): array
     {
         // Garantie qu'un utilisateur a au moins ROLE_USER
@@ -60,14 +64,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     
         return array_unique($roles);
     }
-    
 
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
         return $this;
     }
+
     public function eraseCredentials(): void
     {
         // Si tu stockes des données sensibles temporaires, nettoie-les ici.
@@ -87,7 +90,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -99,7 +101,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
-
         return $this;
     }
 
@@ -111,7 +112,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
-
         return $this;
     }
 
@@ -123,44 +123,53 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
-
         return $this;
     }
 
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
 
     public function isActive(): bool
-{
-    return $this->isActive;
-}
+    {
+        return $this->isActive;
+    }
 
-public function setIsActive(bool $isActive): self
-{
-    $this->isActive = $isActive;
-    return $this;
-}
-public function __construct()
-{
-    // Initialisation de createdAt à la date actuelle
-    $this->createdAt = new \DateTime();
-}
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+        return $this;
+    }
 
-// Getters et Setters pour createdAt
-public function getCreatedAt(): \DateTimeInterface
-{
-    return $this->createdAt;
-}
+    // Nouveau getter et setter pour confirmationToken
+    public function getConfirmationToken(): ?string
+    {
+        return $this->confirmationToken;
+    }
 
-public function setCreatedAt(\DateTimeInterface $createdAt): self
-{
-    $this->createdAt = $createdAt;
+    public function setConfirmationToken(?string $confirmationToken): self
+    {
+        $this->confirmationToken = $confirmationToken;
+        return $this;
+    }
 
-    return $this;
-}
+    public function __construct()
+    {
+        // Initialisation de createdAt à la date actuelle
+        $this->createdAt = new \DateTime();
+    }
 
+    // Getters et Setters pour createdAt
+    public function getCreatedAt(): \DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
 }
