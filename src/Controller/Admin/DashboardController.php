@@ -1,10 +1,8 @@
 <?php
 namespace App\Controller\Admin;
 
-
-use App\Service\MailService;
 use App\Entity\User;
-use App\Service\BrevoEmailService;
+use App\Entity\Email;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -38,9 +36,13 @@ class DashboardController extends AbstractDashboardController
         $recentUsers = $this->entityManager->getRepository(User::class)
             ->findBy([], ['createdAt' => 'DESC'], 5);  // Trier par date de création (ajuster selon le nom du champ)
 
+        // Récupérer les derniers emails envoyés (par exemple, les 5 derniers)
+        $recentEmails = $this->entityManager->getRepository(Email::class)
+            ->findBy([], ['sentAt' => 'DESC'], 5);  // Trier par date d'envoi
+
         return $this->render('admin/dashboard.html.twig', [
             'recentUsers' => $recentUsers,
-           
+            'recentEmails' => $recentEmails,  // Ajouter cette ligne pour passer les emails à la vue
         ]);
     }
 
@@ -54,7 +56,6 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
+        yield MenuItem::linkToCrud('Emails envoyés', 'fas fa-envelope', Email::class);  // Ajouter cette ligne pour les emails
     }
-
 }
-

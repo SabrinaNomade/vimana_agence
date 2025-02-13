@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminUserController extends AbstractController
 {
     #[Route('/users', name: 'users_list')]
+    
     public function usersList(UserRepository $userRepository): Response
     {
         $users = $userRepository->findAll(); // Récupère tous les utilisateurs
