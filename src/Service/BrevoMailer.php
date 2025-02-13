@@ -3,17 +3,21 @@ namespace App\Service;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use App\Entity\Email;
+use Doctrine\ORM\EntityManagerInterface;
 
 class BrevoMailer
 {
     private HttpClientInterface $client;
     private string $apiKey;
+    private EntityManagerInterface $entityManager;
 
-    // Constructeur modifié pour utiliser HttpClientInterface
-    public function __construct(HttpClientInterface $client)
+    // Constructeur modifié pour utiliser HttpClientInterface et EntityManagerInterface
+    public function __construct(HttpClientInterface $client, EntityManagerInterface $entityManager)
     {
         $this->client = $client;
         $this->apiKey = $_ENV['BREVO_API_KEY'] ?? null; // Récupérer la clé API depuis l'environnement
+        $this->entityManager = $entityManager;
     }
 
     public function sendEmail(string $to, string $subject, string $confirmationUrl)
@@ -26,7 +30,6 @@ class BrevoMailer
             </head>
             <body>
                 <p>Bienvenue sur Vimana Paris!</p>
-                
                 <p>Cliquez sur ce lien pour confirmer votre email : </p>
                 <a href="' . $confirmationUrl . '">' . $confirmationUrl . '</a>
             </body>
@@ -61,6 +64,17 @@ class BrevoMailer
             // Décoder la réponse
             $responseData = $response->toArray(); // Utilisation de la méthode toArray() pour obtenir le corps de la réponse sous forme de tableau
 
+            // Enregistrement de l'email dans la base de données
+            $email = new Email();
+            $email->setRecipient($to);
+            $email->setSubject($subject);
+            $email->setContent($htmlContent);
+            $email->setSentAt(new \DateTime()); // Enregistrement de la date d'envoi
+
+            // Persister l'email dans la base de données
+            $this->entityManager->persist($email);
+            $this->entityManager->flush();
+
             // Retourner la réponse de l'API
             return $responseData;
 
@@ -70,3 +84,4 @@ class BrevoMailer
         }
     }
 }
+

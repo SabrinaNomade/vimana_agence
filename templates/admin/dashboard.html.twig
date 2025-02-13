@@ -31,6 +31,32 @@
             </tbody>
         </table>
 
-       
+        <h2>Derniers emails envoyés</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Destinataire</th>
+                    <th>Sujet</th>
+                    <th>Date d'envoi</th>
+                    <th>Contenu</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for email in recentEmails %}
+                    <tr>
+                        <td>{{ email.recipient }}</td>
+                        <td>{{ email.subject }}</td>
+                        <td>{{ email.sentAt|date('Y-m-d H:i') }}</td>
+                        <td>{{ email.content|slice(0, 50) }}...</td>  {# Affiche les 50 premiers caractères du contenu #}
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucun email envoyé trouvé</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
     </div>
+
 {% endblock %}
