@@ -1,0 +1,108 @@
+.realization {
+    font-family: 'Cinzel', serif;
+}
+
+.intro p, .accompagnement h3, .accompagnement p {
+    background-color: #594e4e;  /* Ajout de la couleur de fond */
+    padding: 10px;  /* Ajout du padding */
+}
+
+/* Section des réalisations */
+.realizations-section {
+    padding: 40px;
+    background: white;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Permet de faire "reculer" les éléments si besoin */
+    justify-content: space-between;
+}
+
+.realizations-section h2 {
+    font-size: 32px;
+    color: #000000;
+    margin-bottom: 40px;
+    width: 100%;  /* S'assure que le titre occupe toute la largeur */
+}
+
+/* Réalisation individuelle */
+.realization {
+    background: #594e4e;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+    width: 20%;  /* Pour les écrans larges */
+    margin: 0 10px; /* Espacement horizontal entre les éléments */
+}
+
+/* Effet au survol des projets */
+.realization:hover {
+    transform: scale(1.05);
+}
+
+/* Style de l'image dans chaque projet */
+.realization img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+/* Titre de chaque projet */
+.realization h3 {
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Texte de description sous chaque projet */
+.realization p {
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Media Queries pour la Responsivité */
+
+/* Pour les écrans de taille moyenne (tablettes) */
+@media (max-width: 1024px) {
+    .realizations-section {
+        padding: 20px; /* Réduit le padding pour les tablettes */
+    }
+
+    .realization {
+        width: 48%; /* Deux éléments par ligne sur les tablettes */
+        margin-bottom: 20px;
+    }
+}
+
+/* Pour les petits écrans (mobiles) */
+@media (max-width: 767px) {
+    .realizations-section {
+        padding: 20px;
+    }
+
+    .realization {
+        width: 100%; /* Chaque réalisation prend toute la largeur sur mobile */
+        margin-bottom: 20px;
+    }
+
+    .realization h3 {
+        font-size: 20px; /* Réduire la taille du titre */
+    }
+
+    .realization p {
+        font-size: 14px; /* Réduire la taille du texte dans la description */
+    }
+}
+

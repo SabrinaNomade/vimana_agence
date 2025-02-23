@@ -3,106 +3,180 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 20px;
-    background-color: #ffffff;
-    text-align: center;
-    background: linear-gradient(to right, #3d0565, #6e0108);
-    
-   
+    padding: 60px 20px; /* On met du padding pour donner de l'espace */
+    background-color: #fff;
+    text-align: center; /* Le texte sera centré */
 }
 
 /* Style du bloc de description */
 .description {
-    max-width: 800px;
-    margin-bottom: 40px;
-    background-color: #ffffff;
-    
+    max-width: 1200px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #594e4e, #7e6a6a); /* Dégradé pour un effet sympa */
+    padding: 30px 40px; /* Espacement autour du texte */
+    border-radius: 20px; /* Coins arrondis */
+    box-sizing: border-box; /* Assure que le padding ne change pas la largeur */
 }
 
+/* Titre dans la description */
 .description h2 {
     font-size: 2.5rem;
-    color: #000000;
+    color: #ffffff;
     margin-bottom: 10px;
     font-family: 'Cinzel', serif;
 }
 
+/* Texte dans la description */
 .description p {
     font-size: 1.1rem;
-    color: #161515;
-    line-height: 1.6;
+    color: #ffffff;
+    line-height: 2.0;
+    font-family: 'Cinzel', serif;
 }
 
-/* Style du texte en gras */
+/* Texte en gras dans la description */
 .description p strong {
-    color: #ffffff;
-    font-size: 1.2rem;
+    background: linear-gradient(to right, #3d0565, #6e0108); /* Un petit effet pour le texte en gras */
+    font-size: 1.9rem;
 }
-/* Conteneur global pour les carrousels alignés */
-/* Conteneur global pour les carrousels */
+
+/* Style du bloc description2 */
+.description2 {
+    background: linear-gradient(to right, #594e4e, #a88d8d);
+    max-width: 1200px;
+    margin: 40px auto; /* Centré avec une marge */
+    padding: 30px 40px;
+    border-radius: 15px;
+    color: #3d3636; /* Texte en blanc */
+    line-height: 1.8;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Liste dans description2 */
+ul li {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Au survol, on change l'apparence des items */
+ul li:hover {
+    color: #fff;
+    background: linear-gradient(to right, #3d0565, #6e0108);
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+/* Style des titres dans description2 */
+.description2 strong {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+/* Liste à puces */
+.description2 ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.description2 ul li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* Mise en forme du texte dans description2 */
+.description2 p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-family: 'Cinzel', serif;
+}
+
+/* Titre centré */
+.centered-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'Cinzel', serif;
+}
+
+/* Conteneur global des carrousels */
 .card-carousel-container {
-    background: linear-gradient(to right, #f4d3db, #745356);
+    background: linear-gradient(to right, #594e4e, #a88d8d);
     display: flex;
     justify-content: space-between;
     gap: 20px; /* Espacement entre les carrousels */
-    flex-wrap: wrap; /* Pour permettre l'alignement correct sur plusieurs lignes */
-     padding: 40px 20px;
-    border-radius: 15px;
+    flex-wrap: wrap;
+    padding: 20px 10px;
+    border-radius: 20px;
+    margin: 40px auto;
+    width: 80%; /* Limite la largeur à 80% */
+    max-width: 1200px;
+    height: auto;
 }
 
 /* Carrousel principal */
 .card-carousel {
     display: block;
-    width: 300px; /* Largeur fixe du carrousel */
-    overflow: hidden; /* Cache les cartes qui débordent du carrousel */
-    position: relative; /* Positionnement pour les flèches */
-    margin-bottom: 20px;
-   
+    width: 250px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 30px;
 }
 
-/* Le conteneur des cartes (alignement horizontal) */
+/* Le conteneur des cartes dans le carrousel */
 .card-carousel .carousel {
     display: flex;
-    transition: transform 0.5s ease; /* Animation fluide lors du déplacement */
+    transition: transform 0.5s ease;
 }
 
 /* Chaque carte dans le carrousel */
 .card-carousel .card {
-    flex: 0 0 100%; /* Chaque carte prend 100% de la largeur du carrousel */
+    flex: 0 0 100%;
     box-sizing: border-box;
 }
 
 /* Image dans chaque carte */
 .card-carousel .card img {
-    width: 100%;
-    height: auto;
+    width: 130%; /* Augmenter la largeur à 110% */
+    height: auto; /* La hauteur s'ajuste automatiquement pour garder les proportions */
+    object-fit: cover; /* Optionnel : permet de mieux gérer l'adaptation de l'image */
 }
-/* Contenu (titre et description) dans chaque carte */
+
+/* Contenu de chaque carte */
 .card-carousel .card-content {
     padding: 10px;
     text-align: center;
+    font-family: 'Cinzel', serif;
+    background-color: #ffffff;
+    height: 80%;
 }
 
-/* Navigation (précédent/suivant) */
+/* Navigation du carrousel (précédent/suivant) */
 .card-carousel .carousel-navigation {
     position: absolute;
     top: 50%;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    transform: translateY(-50%); /* Centre les boutons verticalement */
-    z-index: 10; /* Assure que les boutons sont au-dessus des images */
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
 .card-carousel .carousel-navigation button {
-    background: rgba(255, 255, 255, 0.15); /* Effet verre */
+    background: rgba(255, 255, 255, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.3);
     color: rgb(102, 7, 18);
     padding: 12px;
-    border-radius: 50%; /* Boutons ronds */
+    border-radius: 50%;
     font-size: 22px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    backdrop-filter: blur(10px); /* Effet flou pour un look moderne */
+    backdrop-filter: blur(10px);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -112,47 +186,49 @@
     align-items: center;
     justify-content: center;
 }
-/* Position des boutons */
-.card-carousel .carousel-navigation .prev {
-    left: -15px; /* Légèrement en dehors du conteneur */
-}
 
+/* Position des boutons (précédent et suivant) */
+.card-carousel .carousel-navigation .prev {
+    left: -10px;
+}
 
 .card-carousel .carousel-navigation .next {
-    right: -15px; /* Décalage à droite */
+    right: -15px;
 }
-/* Effet au survol */
+
+/* Effet au survol des boutons */
 .card-carousel .carousel-navigation button:hover {
     background: rgb(53, 3, 65);
-    color: #6e0108; /* Rouge foncé */
+    color: #6e0108;
     transform: scale(1.1);
 }
-/* Conteneur du bouton */
+
+/* Style du bouton "Voir plus" */
 .see-more {
     text-align: center;
     margin-top: 20px;
 }
 
-/* Style du bouton */
 .btn-see-more {
     display: inline-block;
     padding: 12px 25px;
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
-    background: linear-gradient(to right, #6e0108, #3d0565); /* Dégradé inverse */
+    background: linear-gradient(to right, #6e0108, #3d0565);
     border-radius: 30px;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Effet au survol */
+/* Effet au survol du bouton */
 .btn-see-more:hover {
     transform: scale(1.1);
-    background: linear-gradient(to right,#6e0108,#3d0565);
+    background: linear-gradient(to right, #6e0108, #3d0565);
 }
-/* Conteneur principal */
+
+/* Section principale de texte */
 .text-section {
     display: flex;
     justify-content: space-between;
@@ -162,92 +238,148 @@
     padding: 20px;
 }
 
-/* Styles des blocs de texte */
+/* Style des blocs de texte */
 .text-block {
-    width: 45%; /* Chaque bloc prend presque la moitié de la largeur */
-    background: linear-gradient(to right, #fef2f5, #fff8f8);
-    padding: 20px;
+    width: 80%;
+    background: linear-gradient(to right, #594e4e, #a88d8d);
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(163, 3, 3, 0.2);
     text-align: left;
-    flex-grow: 1; /* Étire les blocs pour remplir l'espace uniformément */
-    
+    flex-grow: 1;
 }
 
-/* Titre des blocs */
+/* Titre des blocs de texte */
 .text-block h3 {
     font-size: 1.5rem;
     color: rgb(0, 0, 0);
     margin-bottom: 10px;
 }
 
-/* Paragraphes */
+/* Paragraphe dans les blocs de texte */
 .text-block p {
     font-size: 1.1rem;
-    color: #000000;
-    line-height: 1.6;
+    color: #ffffff;
+    line-height: 1.9;
 }
 
+/* Responsive Design */
 
-/* Responsive Tablettes (max 1024px) */
-@media screen and (max-width: 1024px) {
-    .card-carousel-container {
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .card-carousel {
-        width: 45%; /* Deux carrousels côte à côte */
-    }
-}
-
-/* Responsive Smartphones (max 768px) */
-@media screen and (max-width: 768px) {
-    .card-carousel-container {
-        flex-direction: column; /* Un seul carrousel par ligne */
-        align-items: center;
-    }
-
-    .card-carousel {
-        width: 90%; /* Pleine largeur */
-    }
-
-    /* Ajustement des boutons sur mobile */
-    .card-carousel .carousel-navigation button {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-    }
-
-    .card-carousel .carousel-navigation .prev {
-        left: 5px;
-    }
-
-    .card-carousel .carousel-navigation .next {
-
-        right: 5px;
-    }
-    .text-section {
-        flex-direction: column; /* Les blocs passent en colonne */
-        align-items: center;
-    }
-    .text-block {
-        width: 100%; /* Prend toute la largeur sur mobile */
-        text-align: center;
-    }
+/* Pour les tablettes et petits écrans (moins de 768px) */
+@media (max-width: 768px) {
     .about {
-        padding: 40px 15px;
+        padding: 20px; /* Réduire l'espace autour du contenu */
+    }
+
+    /* Carrousel */
+    .card-carousel-container {
+        width: 100%; /* Prend toute la largeur de l'écran */
+        flex-direction: column; /* Alignement en colonne */
+        align-items: center; /* Centrer les éléments */
+        padding: 15px; /* Réduire le padding */
+    }
+
+    .card-carousel {
+        width: 90%; /* Ajuste la taille du carrousel */
+        max-width: 300px; /* Limite la taille du carrousel */
+        margin: 0 auto; /* Centrer le carrousel */
+    }
+
+    .card-carousel .card img {
+        width: 100%; /* Assure que l'image s'adapte à la taille de la carte */
+        height: auto; /* Garde les proportions */
+    }
+
+    .description {
+        padding: 20px;
+        margin-bottom: 30px;
+        max-width: 100%; /* Prend toute la largeur disponible */
     }
 
     .description h2 {
-        font-size: 2rem; /* Réduction de la taille du titre */
+        font-size: 1.8rem; /* Réduire la taille du titre */
     }
 
     .description p {
-        font-size: 1rem; /* Réduction de la taille du texte */
+        font-size: 1rem; /* Réduire la taille du texte */
+    }
+
+    .text-section {
+        flex-direction: column; /* Mettre les éléments en colonne */
+        align-items: center; /* Centrer les blocs */
+        padding: 0;
+    }
+
+    .text-block {
+        width: 90%; /* Ajuster la largeur des blocs de texte */
+        padding: 15px; /* Réduire le padding pour plus d'espace */
+        text-align: center; /* Centrer le texte */
+    }
+
+    .text-block p {
+        font-size: 0.9rem; /* Réduire la taille du texte pour petits écrans */
+        line-height: 1.5; /* Ajuster l'interligne */
+    }
+
+    .btn-see-more {
+        font-size: 1rem; /* Réduire la taille du bouton */
+        padding: 10px 20px;
+    }
+
+    .description2 {
+        padding: 20px;
+        max-width: 100%; /* Prendre toute la largeur */
+    }
+
+    .description2 p {
+        font-size: 0.9rem; /* Réduire la taille du texte */
     }
 }
 
+/* Pour les écrans moyens (768px à 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .card-carousel-container {
+        width: 90%;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 
+    .card-carousel {
+        width: 220px; /* Ajuster la largeur du carrousel */
+    }
 
+    .description h2 {
+        font-size: 2rem; /* Taille modérée pour les titres */
+    }
+
+    .description p {
+        font-size: 1rem; /* Taille de texte modérée */
+    }
+
+    .text-section {
+        flex-direction: column; /* Passage en colonne sur les écrans moyens */
+        align-items: center; /* Centrer les éléments */
+    }
+
+    .text-block {
+        width: 80%; /* Ajuster la largeur des blocs */
+        padding: 20px; /* Ajouter un peu de padding */
+    }
+}
+
+/* Pour les grands écrans (plus de 1024px) */
+@media (min-width: 1024px) {
+    .about {
+        padding: 80px 30px;
+    }
+
+    .text-section {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .card-carousel-container {
+        width: 80%;
+    }
+}
 

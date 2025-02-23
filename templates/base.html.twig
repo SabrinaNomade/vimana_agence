@@ -9,36 +9,48 @@
     <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/styles/form-styles.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/styles/footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/styles/carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/styles/carousel.css?version=4.5.6') }}">
+    <link rel="stylesheet" href="{{ asset('assets/styles/form-contact.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/styles/expertise.css?version=7.8.9') }}">
+    <link rel="stylesheet" href="{{ asset('assets/styles/realisations.css?version=1.2.3') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+
+
+
+
 
    
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+    <!-- Inclure le JavaScript de Cookie Consent -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 </head>
 <body>
-   <nav class="navbar">
-       <div class="logo">
-           <a href="{{ path('app_home') }}">
-               <img src="{{ asset('assets/images/logo-v.png') }}" alt="Logo Agence">
-           </a>
-           <span class="brand-name">Vimana Paris</span>
-       </div>
-       <button class="nav-toggle" aria-label="Menu">
-           ☰
-       </button>
-       <ul class="nav-links">
-           <li><a href="{{ path('app_home') }}">Accueil</a></li>
-           <li><a href="{{ path('app_expertise') }}">Notre Expertise</a></li>
-           <li><a href="{{ path('app_realisations') }}">Nos Réalisations</a></li>
-           <li><a href="{{ path('app_apropos') }}">Qui sommes-nous</a></li>
-           <li><a href="{{ path('app_contact') }}">Contact</a></li>
-           <li><a href="{{ path('app_register') }}">Inscription</a></li>
-           <li><a href="{{ path('app_connexion') }}">Connexion</a></li>
-       </ul>
-   </nav>
+
+
+
+  <nav class="navbar">
+    <div class="logo">
+        <a href="{{ path('app_home') }}">
+            <img src="{{ asset('assets/images/logo-v.png') }}" alt="Logo Agence">
+        </a>
+        <span class="brand-name">Vimana Paris</span>
+    </div>
+    <!-- Bouton Burger -->
+    <button class="nav-toggle" aria-label="Menu" onclick="toggleMenu()">
+        ☰
+    </button>
+    <ul class="nav-links">
+        <li><a href="{{ path('app_home') }}">Accueil</a></li>
+        <li><a href="{{ path('app_expertise') }}">Notre Expertise</a></li>
+        <li><a href="{{ path('app_realisations') }}">Nos Réalisations</a></li>
+        <li><a href="{{ path('app_contact') }}">Contact</a></li>
+        <li><a href="{{ path('app_register') }}">Inscription</a></li>
+        <li><a href="{{ path('app_connexion') }}">Connexion</a></li>
+    </ul>
+</nav>
 
    <!-- Insérer ici le bloc hero -->
    {% block hero %}{% endblock %}
@@ -51,11 +63,11 @@
                    {% block form %}{% endblock %}
                </div>
            </div>
-       </div>
+
    {% endblock %}
 
    <!-- Footer -->
-<footer class="footer" style="background-image: url('{{ asset('assets/images/louvre-museum-2218336_1280.jpg') }}');">
+<footer class="footer" style="background-image: url('{{ asset('assets/images/eiffel-tower-5055438_640.jpg') }}');">
     <div class="container">
         <!-- Logo au centre en haut -->
         <div class="footer-logo">
@@ -100,12 +112,16 @@
                 </li>
             </ul>
         </div>
-
+ 
+ <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; width: 100%; background-color: #000; color: #fff; padding: 10px; text-align: center;">
+    Ce site utilise des cookies pour améliorer votre expérience.
+    <button id="accept-cookies" style="background-color: #f1d600; color: #000; padding: 5px 10px; border: none; cursor: pointer;">J'accepte</button>
+</div>
         <!-- Section des VimaNews -->
         <div class="footer-newsletter">
             <h4 class="footer-title">C'est par ici les VimaNews</h4>
             <p>
-                <a href="{{ path('newsletter') }}" class="footer-link">S'inscrire à la newsletter</a>
+                <a href="{{ path('newsletter') }}" class="footer-link">S'inscrire à la newsletters</a>
             </p>
             <p class="footer-year">© <span id="current-year"></span> Tous droits réservés.</p>
 
@@ -114,8 +130,12 @@
 </footer>
 
 
+
+
    <!-- JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
    <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="{{ asset('assets/js/form-contact.js') }}"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 
 </body>

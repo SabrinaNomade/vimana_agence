@@ -66,16 +66,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ********** MENU BURGER **********
-    const navToggle = document.querySelector(".nav-toggle");
-    const navLinks = document.querySelector(".nav-links");
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
 
-    if (navToggle && navLinks) {
-    navToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
+    const navToggle = document.querySelector('.nav-toggle');
+    if (navToggle) {
+        navToggle.addEventListener('click', toggleMenu);
+    }
+
+    // ********** GESTION DE LA BANNIÈRE DE COOKIES **********
+    if (!localStorage.getItem('cookies_accepted')) {
+        // Affiche la bannière si l'utili n'a pas encore accepté les cookies
+        document.getElementById('cookie-banner').style.display = 'block';
+    }
+
+    // Ajoute un événement pour accepter les cookies
+    document.getElementById('accept-cookies').addEventListener('click', () => {
+        // Sauvegarde le consentement dans localStorage
+        localStorage.setItem('cookies_accepted', 'true');
+        // Cache la bannière après l'acceptation
+        document.getElementById('cookie-banner').style.display = 'none';
     });
-} else {
-    console.error("Élément(s) du menu introuvable(s) !");
-}
 
     // ********** NEWSLETTER VALIDATION **********
     const newsletterForm = document.querySelector("#newsletter-form");
@@ -102,7 +115,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const socialLinks = document.querySelectorAll(".footer-social-icons a");
     socialLinks.forEach(link => {
         link.addEventListener("click", (event) => {
-            // Ajoute ici un suivi ou une action spécifique
+            
         });
     });
 });
+

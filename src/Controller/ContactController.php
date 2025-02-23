@@ -1,41 +1,63 @@
 <?php
 // src/Controller/ContactController.php
+
 namespace App\Controller;
 
-use App\Entity\Contact;
 use App\Form\ContactType;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Document\Contact;
+use App\Service\BrevoMailer; // Assure-toi que le service BrevoMailer est importé
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'app_contact')]
-    public function contact(Request $request, EntityManagerInterface $entityManager): Response
+    private BrevoMailer $brevoMailer; // Déclare la variable pour le service BrevoMailer
+
+    // Injection du service BrevoMailer via le constructeur
+    // Le service BrevoMailer est utilisé pour envoyer des emails via Brevo (anciennement Sendinblue)
+    public function __construct(BrevoMailer $brevoMailer)
     {
+        $this->brevoMailer = $brevoMailer;  // Initialisation du service BrevoMailer
+    }
+
+    // Route pour afficher et traiter le formulaire de contact
+    #[Route('/contact', name: 'app_contact')] 
+    public function contact(Request $request): Response
+    {
+        // Création d'un nouvel objet Contact
         $contact = new Contact();
 
-        // Créer le formulaire
+        // Création du formulaire basé sur la classe ContactType
         $form = $this->createForm(ContactType::class, $contact);
+
+        // Traitement de la requête HTTP pour le formulaire
         $form->handleRequest($request);
 
-        // Si le formulaire est soumis et valide
+        // Vérifie si le formulaire a été soumis et s'il est valide
         if ($form->isSubmitted() && $form->isValid()) {
-            // Sauvegarder les données en base (optionnel)
-            $entityManager->persist($contact);
-            $entityManager->flush();
+            // Récupère les données du formulaire, comme le nom, l'email et le message
+            $nom = $contact->getName();
+            $email = $contact->getEmail();
+            $message = $contact->getMessage();
 
-            // Ajouter un message flash pour l'utilisateur
-            $this->addFlash('success', 'Votre message a été envoyé avec succès.');
+            // Appel de la méthode pour envoyer l'email à l'administrateur via BrevoMailer
+            // Cette méthode utilise le service BrevoMailer pour envoyer l'email
+            $this->brevoMailer->sendContactEmail($nom, $email, $message);
 
-            // Rediriger après soumission
+            // Ajoute un message flash de succès pour informer l'utilisateur que son message a été envoyé
+            $this->addFlash('success', 'Message envoyé avec succès !');
+
+            // Redirige l'utilisateur vers la même page après une soumission réussie
             return $this->redirectToRoute('app_contact');
         }
 
-        return $this->render('pages/contact/index.html.twig', [
-            'form' => $form->createView(),
+        // Rend la vue 'contact.html.twig' et passe le formulaire à la vue
+        return $this->render('pages/user/contact.html.twig', [
+            'form' => $form->createView(), // Création du formulaire à afficher dans la vue
         ]);
     }
 }
+
+

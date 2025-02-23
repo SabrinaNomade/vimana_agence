@@ -1,0 +1,27 @@
+{# templates/contact/contact.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire de Contact{% endblock %}
+
+{% block content %}
+    <h1>Formulaire de Contact</h1>
+
+    {# Affiche les messages flash (par exemple, succès) #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# Affichage du formulaire #}
+    <form id="form-contact" method="post" action="{{ path('app_contact') }}">
+        {{ form_start(form) }}
+        {{ form_row(form.name) }}  {# Champ Nom #}
+        {{ form_row(form.email) }} {# Champ Email #}
+        {{ form_row(form.message) }} {# Champ Message #}
+        {{ form_row(form.submit) }} {# Bouton Envoyer #}
+        {{ form_end(form) }}
+    </form>
+{% endblock %}
+

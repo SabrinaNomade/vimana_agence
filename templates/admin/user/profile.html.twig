@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon profil{% endblock %}
+
+{% block content %}
+    <h1>Modifier votre profil</h1>
+
+    {# Affichage des messages de succès (flash messages) #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# Affichage du formulaire #}
+    {{ form_start(form) }}
+        {{ form_row(form.firstName) }}
+        {{ form_row(form.lastName) }}
+        {{ form_row(form.email) }}
+    {{ form_end(form) }}
+
+    {# Affichage du bouton de déconnexion #}
+    {% if app.user %}
+        <form action="{{ path('app_deconnexion') }}" method="post">
+            <button type="submit" class="btn btn-danger mt-3" style="width: 100%; font-weight: bold;">
+                Déconnexion
+            </button>
+        </form>
+    {% endif %}
+{% endblock %}
+
+
+
+
+

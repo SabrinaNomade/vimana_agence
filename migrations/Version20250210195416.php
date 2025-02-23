@@ -20,7 +20,7 @@ final class Version20250210195416 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE user ADD is_active TINYINT(1) NOT NULL, ADD created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL, CHANGE roles roles JSON NOT NULL, CHANGE phone phone VARCHAR(15) DEFAULT NULL');
+        $this->addSql('ALTER TABLE user ADD is_active TINYINT(1) NOT NULL, ADD created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL, CHANGE phone phone VARCHAR(15) DEFAULT NULL');
         $this->addSql('ALTER TABLE user RENAME INDEX uniq_identifier_email TO UNIQ_8D93D649E7927C74');
     }
 

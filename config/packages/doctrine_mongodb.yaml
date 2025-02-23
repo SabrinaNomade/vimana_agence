@@ -1,0 +1,12 @@
+doctrine_mongodb:
+    connections:
+        default:
+            server: 'mongodb://localhost:27017'  # URL du serveur MongoDB
+            options: {}  # Optionnel, tu peux ajouter des options si nécessaire
+
+    # Configure la base de données par défaut pour MongoDB
+    default_database: 'vimana_agence'  # Remplace par le nom de ta base de données MongoDB
+
+    document_managers:
+        default:
+            auto_mapping: true  # Active le mappage automatique des documents
