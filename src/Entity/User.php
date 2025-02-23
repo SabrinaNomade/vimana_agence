@@ -44,6 +44,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     // Nouveau champ pour le token de confirmation
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $confirmationToken = null;
+    // Nouveau champ pour le token de réinitialisation de mot de passe
+#[ORM\Column(type: 'string', length: 255, nullable: true)]
+private ?string $resetToken = null;
+
 
     // Méthodes UserInterface et PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
@@ -172,4 +176,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->createdAt = $createdAt;
         return $this;
     }
+    public function getResetToken(): ?string
+{
+    return $this->resetToken;
+}
+
+public function setResetToken(?string $resetToken): self
+{
+    $this->resetToken = $resetToken;
+    return $this;
+}
+
 }

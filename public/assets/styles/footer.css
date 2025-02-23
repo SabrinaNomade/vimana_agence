@@ -1,27 +1,30 @@
-/* Assurer que le footer prend toute la largeur et une hauteur minimale */
+ /* Assurer que le footer touche le bas de la page */
+ html, body {
+    min-height: 100vh; /* Force le body à occuper toute la hauteur de la fenêtre */
+    display: flex;
+    flex-direction: column;
+    margin: 0; /* Supprime la marge par défaut */
+}
+
+/* Le footer doit rester en bas de la page, même s'il n'y a pas beaucoup de contenu */
+body > *:not(footer) {
+    flex-grow: 1; /* Ce contenu pousse le footer vers le bas */
+}
+
+/* Footer */
 footer {
     position: relative;
     width: 100%;
     background-color: #18011f;
     color: white;
-    padding: 30px 15px;
-    min-height: 150px; /* Ajuste selon le besoin */
+    padding: 20px 15px; /* Padding ajusté pour réduire l'espace */
+    min-height: 120px; /* Hauteur minimale du footer */
     font-family: 'Cinzel', serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-/* Empêcher l'effet d'écrasement du contenu */
-html, body {
-    min-height: 100vh; /* Force le body à occuper toute la hauteur */
-    display: flex;
-    flex-direction: column;
-}
-
-body > *:not(footer) {
-    flex-grow: 1; /* Le contenu s'étend pour pousser le footer en bas */
+    justify-content: center; /* Centre les éléments verticalement */
+    margin-top: auto; /* Le footer prend le bas de la page */
 }
 
 /* Conteneur du footer */
@@ -35,40 +38,45 @@ footer .container {
     text-align: center;
 }
 
-/* Ajuster la taille des éléments du footer */
+/* Logo à gauche en bas */
+footer .footer-logo {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
 footer .footer-logo img {
-    height: 100px;
-    width: auto;
+    height: 80px; /* Ajuste la hauteur du logo */
+    width: 190px; /* Largeur du logo */
 }
 
-footer .footer-social-links,
-footer .footer-newsletter {
-    flex: 1;
-    min-width: 250px;
-}
-
-/* Centrer et espacer les liens */
-footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-footer ul li {
-    margin-bottom: 10px;
-}
-
+/* Liens des réseaux sociaux */
 footer ul li a {
     text-decoration: none;
-    color: white;
-    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
     transition: color 0.3s ease;
+    font-weight: bold;
+    
 }
 
 footer ul li a:hover {
     color: #6e0108;
 }
 
-/* Responsive - Ajustement sur mobile */
+/* Sections des réseaux sociaux et newsletter */
+footer .footer-title {
+    font-size: 2.0rem;
+    margin-bottom: 15px;
+
+}
+
+
+
+
+/* Responsive : Pour les petits écrans */
 @media screen and (max-width: 768px) {
     footer .container {
         flex-direction: column;
@@ -76,33 +84,24 @@ footer ul li a:hover {
         text-align: center;
     }
 
-    footer {
-        padding: 20px 10px;
-    }
     footer .footer-logo img {
-        height: 80px;
+        height: 60px;
+        width: 180px;
     }
 
-    footer .footer-social-links,
-    footer .footer-newsletter {
-        width: 100%;
-    }
     footer ul li a {
-        font-size: 1.5rem; /* Ajuste pour les tablettes */
+        font-size: 1.3rem; /* Ajuste la taille des liens */
     }
 }
 
 @media screen and (max-width: 480px) {
-    footer {
-        padding: 15px 5px;
-    }
-
     footer .footer-logo img {
-        height: 70px;
+        height: 60px;
+        width: 160px;
     }
 
     footer ul li a {
         font-size: 1.2rem; /* Ajuste pour les mobiles */
     }
-    }
+}
 

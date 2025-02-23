@@ -1,5 +1,51 @@
 {% extends 'base.html.twig' %}
 {# templates/expertise/index.html.twig #}
 
+
+
+{% block title %}Notre Expertise{% endblock %}
+
 {% block content %}
+<section class="expertise">
+    <div class="intro">
+        <p>L'accompagnement, une formule sur-mesure</p>
+        <p>Nous sommes vos partenaires stratégiques, offrant un soutien ponctuel ou mensuel adapté à votre budget. De la production à la diffusion, de la recherche de financements à l’exploration de nouveaux horizons, nous sommes les agents de votre succès artistique.</p>
+    </div>
+    
+    <div class="accompagnement">
+        <h3>Prendre votre premier rendez-vous gratuit : parlons de la formule qui vous convient !</h3>
+        <p>Pour répondre à vos besoins, l’équipe de Vimana a développé trois types d’accompagnement :</p>
+        
+        <div class="columns">
+            <div class="column">
+                <img src="{{ asset('assets/images/vani desk.jpeg') }}" alt="Autonome">
+                <h4>AUTONOME – sans engagement</h4>
+                <p>1 rendez-vous d’une heure.</p>
+                <p>Accompagnement : création, conception, budget, relecture de dossiers.</p>
+                <p><strong>À PARTIR DE 120€ TTC PAR MOIS</strong></p>
+            </div>
+          
+              <div class="column">
+                <img src="{{ asset('assets/images/WhatsApp-Image-2024-07-20-at-11.29.35-e1721469299765.jpeg') }}" alt="Balisé">
+                <h4>BALISÉ – mensuel ou annuel</h4>
+                <p>Un premier rendez-vous de mise en place de l’accompagnement.</p>
+                <p>12 rendez-vous dans l’année, ou 1 rendez-vous mensuel, à placer comme vous le souhaitez selon l’avancée de votre projet.
+                Disponibilités à raison d’un e-mail, pour la gestion des urgences.
+                Accompagnement sur : création, conception, budget, dossiers, communication et diffusion.</p>
+                <p><strong>À PARTIR DE 250€ TTC PAR MOIS</strong> ou <strong>À PARTIR DE 2780€ TTC PAR AN</strong></p>
+                <a href="{{ path('app_contact') }}" class="btn-contact">Contactez-nous</a>
+            </div>
+            <div class="column">
+                <img src="{{ asset('assets/images/WhatsApp-Image-2024-07-20-at-11.04.25.jpeg') }}" alt="Créatif">
+                <h4>CRÉATIF – sur-mesure, mensuel ou annuel</h4>
+                <p>Un premier rendez-vous de mise en place de l’accompagnement.</p>
+                <p>12 rendez-vous dans l’année, ou plus, à placer comme vous le souhaitez selon l’avancée de votre projet.
+                Accompagnement à un ou plusieurs rendez-vous avec des interlocuteurs.
+Échanges e-mail et appels.
+Accompagnement sur : création, stratégies, conception, budget, dossiers, communication et diffusion.</p>
+                <p><strong>À PARTIR DE 400€ TTC PAR MOIS</strong> ou <strong>À PARTIR DE 4380€ TTC PAR AN</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

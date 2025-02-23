@@ -1,145 +1,117 @@
 <?php
-
 namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use App\Form\RegistrationType;
 use App\Repository\UserRepository;
-use App\Service\BrevoMailer; // Service d'email avec Brevo
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class RegistrationController extends AbstractController
 {
-    private $brevoMailer;
     private $entityManager;
+    private $tokenStorage;
 
-    public function __construct(BrevoMailer $brevoMailer, EntityManagerInterface $entityManager)
+    // Injection des services nécessaires via le constructeur
+    public function __construct(EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage)
     {
-        $this->brevoMailer = $brevoMailer;
-        $this->entityManager = $entityManager; // Stocke l'EntityManager
+        $this->entityManager = $entityManager;
+        $this->tokenStorage = $tokenStorage;
     }
 
     #[Route('/inscription', name: 'app_register')]
-    public function register(
-        Request $request,
-        UserRepository $userRepository,
-        UserPasswordHasherInterface $passwordHasher
-    ): Response {
+    public function register(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $passwordHasher): Response
+    {
+        // Crée un nouvel objet utilisateur pour le formulaire
         $user = new User();
         $form = $this->createForm(RegistrationType::class, $user);
-        $form->handleRequest($request);
+        $form->handleRequest($request);  // Traite les données soumises du formulaire
 
+        // Si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
-            // Vérifier si l'utilisateur existe déjà
+            // Nettoie l'email pour éviter les espaces et vérifie s'il existe déjà
             $cleanEmail = trim($user->getEmail());
             $user->setEmail($cleanEmail);
             $userExistant = $userRepository->findOneBy(['email' => $cleanEmail]);
 
+            // Si l'email existe déjà dans la base de données
             if ($userExistant) {
+                // Affiche un message d'erreur si l'email existe
                 $this->addFlash('error', 'Cet utilisateur existe déjà.');
                 return $this->render('pages/registration/register.html.twig', [
                     'form' => $form->createView(),
                 ]);
             }
 
-            // Hachage du mot de passe
+            // Si le mot de passe est renseigné, on le hache pour le stocker
             $plainPassword = $form->get('plainPassword')->getData();
             if ($plainPassword) {
-                $hashedPassword = $passwordHasher->hashPassword($user, $plainPassword);
-                $user->setPassword($hashedPassword);
+                $hashedPassword = $passwordHasher->hashPassword($user, $plainPassword);  // Hache le mot de passe
+                $user->setPassword($hashedPassword);  // Assigne le mot de passe haché à l'utilisateur
 
-                // Création d'un token de confirmation
-                $confirmationToken = bin2hex(random_bytes(16)); // Token unique
-                $user->setConfirmationToken($confirmationToken);
+                $user->setRoles(['ROLE_USER']);  // Donne à l'utilisateur le rôle de base
+                $this->entityManager->persist($user);  // Sauvegarde l'utilisateur dans la base
+                $this->entityManager->flush();  // Applique les changements à la base de données
 
-                $user->setRoles(['ROLE_USER']); // Assigner le rôle ROLE_USER
-                $this->entityManager->persist($user);
-                $this->entityManager->flush();
+                // Message de succès après l'inscription
+                $this->addFlash('success', 'Inscription réussie !');
 
-                // Envoi de l'email de confirmation avec BrevoMailer
-                try {
-                    $confirmationUrl = $this->generateUrl(
-                        'app_confirm_email',
-                        ['token' => $confirmationToken],
-                        UrlGeneratorInterface::ABSOLUTE_URL
-                    );
-
-                    // Appel de la méthode d'envoi d'email
-                    $responseData = $this->brevoMailer->sendEmail(
-                        $user->getEmail(),
-                        'Confirmez votre email',
-                        'Cliquez sur ce lien pour confirmer votre email: ' . $confirmationUrl
-                    );
-
-                    // Log ou affichage pour voir la réponse de l'API Brevo
-                    var_dump($responseData); // Tu peux retirer cette ligne une fois testé
-
-                    $this->addFlash('success', 'Inscription réussie ! Un email de confirmation vous a été envoyé.');
-                } catch (\Exception $e) {
-                    $this->addFlash('error', 'Une erreur est survenue lors de l\'envoi de l\'email de confirmation.');
-                }
+                return $this->redirectToRoute('app_connexion');
             } else {
+                // Si le mot de passe n'est pas renseigné
                 $this->addFlash('error', 'Le mot de passe est requis.');
             }
         }
 
+        // Retourne le formulaire d'inscription dans la vue
         return $this->render('pages/registration/register.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
-    // Déplace la méthode confirmEmail en dehors de la méthode register
-    #[Route('/confirm-email/{token}', name: 'app_confirm_email')]
-    public function confirmEmail(string $token, UserRepository $userRepository): Response
-    {
-        // Rechercher l'utilisateur par le token de confirmation
-        $user = $userRepository->findOneBy(['confirmationToken' => $token]);
-
-        if (!$user) {
-            // Si aucun utilisateur trouvé, afficher la page d'erreur
-            return $this->render('email/confirmation_error.html.twig');
-        }
-        
-        // Activer l'utilisateur
-        $user->setIsActive(true);  // Activer l'utilisateur
-
-        // Supprimer le token de confirmation
-        $user->setConfirmationToken(null); // Supprimer le token
-
-        // Sauvegarder les modifications dans la base de données
-        $this->entityManager->flush(); // Utilise l'EntityManager injecté
-
-        // Afficher la page de confirmation réussie
-        return $this->render('email/confirmation_success.html.twig');
-    }
-
+    // Route de connexion
     #[Route('/connexion', name: 'app_connexion')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        // Si l'utilisateur est déjà connecté, on le redirige vers son profil
         if ($this->getUser()) {
-            $this->addFlash('success', 'Vous êtes déjà connecté.');
+            return $this->redirectToRoute('app_user_profile', ['id' => $this->getUser()->getUserIdentifier()]);
         }
 
+        // Récupère l'erreur de connexion et le dernier username
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        // Retourne la vue de connexion
         return $this->render('pages/registration/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
         ]);
     }
 
+    // Déconnexion de l'utilisateur
     #[Route('/deconnexion', name: 'app_deconnexion')]
-    public function logout(): void
+    public function logout(SessionInterface $session, TokenStorageInterface $tokenStorage): \Symfony\Component\HttpFoundation\RedirectResponse
     {
-        // Symfony gère déjà la déconnexion, cette méthode peut être vide
+        // Invalide la session et supprime le token de sécurité
+        $session->invalidate();
+        $tokenStorage->setToken(null);
+
+        // Si le cookie de session existe, on l'expire
+        if (isset($_COOKIE[session_name()])) {
+            setcookie(session_name(), '', time() - 3600, '/');
+        }
+
+        // Redirige l'utilisateur vers la page de connexion après déconnexion
+        return $this->redirectToRoute('app_connexion');
     }
 }
+
+            

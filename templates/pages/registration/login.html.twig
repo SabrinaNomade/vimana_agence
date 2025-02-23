@@ -25,21 +25,45 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Se connecter</button>
-            {% if app.user %}
-    <form action="{{ path('app_deconnexion') }}" method="post">
-    <button type="submit" class="btn btn-danger mt-3" style="width: 100%; font-weight: bold;">
-        Déconnexion
-    </button>
-</form>
-
-    </form>
-{% endif %}
-
         </form>
+
+        {# Affichage du bouton de déconnexion si l'utilisateur est connecté #}
+        {% if app.user %}
+            <form action="{{ path('app_deconnexion') }}" method="post">
+                <button type="submit" class="btn btn-danger mt-3" style="width: 100%; font-weight: bold;">
+                    Déconnexion
+                </button>
+            </form>
+
+            {# Script pour réinitialiser le formulaire et effacer les sessions après la déconnexion #}
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    // Réinitialiser le formulaire de connexion après déconnexion
+                    if (document.querySelector('form')) {
+                        document.querySelector('form').reset();  // Effacer les valeurs
+                    }
+                    // Effacer également les champs de session, si besoin
+                    sessionStorage.clear();  // Si tu utilises sessionStorage
+                    localStorage.clear();  // Si tu utilises localStorage
+                });
+            </script>
+        {% endif %}
     </div>
 
     <p>Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">S'inscrire</a></p>
-    <p>
+    
+  
+    
+    {# Lien pour réinitialiser le mot de passe #}
+    <p><a href="{{ path('app_forgotpassword') }}">Mot de passe oublié ?</a></p>
+    
+  
+    
         <a href="{{ path('app_home') }}">Retour à l'accueil</a>
     </p>
 {% endblock %}
+
+
+
+
+

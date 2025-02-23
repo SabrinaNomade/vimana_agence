@@ -23,10 +23,11 @@ security:
                 check_path: app_connexion
                 username_parameter: email
                 password_parameter: password
-                default_target_path: /
+                default_target_path: app_user_profile
             logout:
                 path: app_deconnexion  # La route de déconnexion
-                target: app_deconnexion  # Redirige l'utilisateur après la déconnexion
+                target: app_connexion  # Redirige l'utilisateur après la déconnexion
+                invalidate_session: true  # Option pour invalider la session
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
