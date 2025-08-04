@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin', name: 'admin_')]  // La base de la route pour toutes les actions de ce contrôleur admin
+#[Route('/admin', name: 'admin_')]  //  base de la route pour toutes les actions de ce contrôleur admin
 class AdminUserController extends AbstractController
 {
     // Route pour afficher la liste des utilisateurs

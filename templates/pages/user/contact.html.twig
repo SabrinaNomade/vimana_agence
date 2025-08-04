@@ -1,27 +1,99 @@
-{# templates/contact/contact.html.twig #}
-
 {% extends 'base.html.twig' %}
 
-{% block title %}Formulaire de Contact{% endblock %}
+{% block title %}Contact - Agence d’Artistes{% endblock %}
 
 {% block content %}
-    <h1>Formulaire de Contact</h1>
-
-    {# Affiche les messages flash (par exemple, succès) #}
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
+<section class="contact-section">
+    <div class="contact-container">
+        <div class="contact-image">
+            <img src="{{ asset('assets/images/84186bf3-6655-49da-9a63-b8dc9170385b.png') }}" alt="Illustration artistique">
         </div>
-    {% endfor %}
 
-    {# Affichage du formulaire #}
-    <form id="form-contact" method="post" action="{{ path('app_contact') }}">
-        {{ form_start(form) }}
-        {{ form_row(form.name) }}  {# Champ Nom #}
-        {{ form_row(form.email) }} {# Champ Email #}
-        {{ form_row(form.message) }} {# Champ Message #}
-        {{ form_row(form.submit) }} {# Bouton Envoyer #}
-        {{ form_end(form) }}
-    </form>
+        <div class="contact-content">
+            <h1>Formulaire de Contact</h1>
+            <p class="intro-message">svp me parlez pas j’ai la flemme 😴</p>
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            <form id="form-contact" method="post" action="{{ path('app_contact') }}">
+                {{ form_start(form) }}
+                <div class="form-icon-row">
+                    <span>👤</span>
+                    {{ form_widget(form.name) }}
+                </div>
+                <div class="form-icon-row">
+                    <span>✉️</span>
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="form-icon-row">
+                    <span>📝</span>
+                    {{ form_widget(form.message) }}
+                </div>
+                {{ form_widget(form.submit) }}
+                {{ form_end(form) }}
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Témoignages -->
+<section class="testimonials">
+  <h2>Ils nous font confiance</h2>
+
+  <div class="testimonial testimonial-left">
+    <img src="{{ asset('assets/images/8-1.webp') }}" alt="Photo de Jean Dupont" />
+    <div class="testimonial-text">
+      <blockquote>"Grâce à cette agence, j’ai enfin pu exposer mes œuvres."</blockquote>
+      <p class="author">— Jean Dupont</p>
+    </div>
+  </div>
+
+  <div class="testimonial testimonial-right">
+    <div class="testimonial-text">
+      <blockquote>"Un accompagnement sur mesure qui m’a boostée."</blockquote>
+      <p class="author">— Marie Curie</p>
+    </div>
+    <img src="{{ asset('assets/images/Ensemble-Les-Apaches-1.webp') }}" alt="Photo de Marie Curie" />
+  </div>
+
+  <div class="testimonial testimonial-left">
+    <img src="{{ asset('assets/images/Artefac-12042023.webp') }}" alt="Photo de Alice Dupuis" />
+    <div class="testimonial-text">
+      <blockquote>"Nous avons eu le privilège de collaborer avec Vimana pour le mentorat de jeunes artistes étudiants
+       au sein de l'association Artefac, et je tiens à exprimer toute ma gratitude envers Marie et Vani,
+        les deux fondatrices. Leur compréhension approfondie des enjeux artistiques et leur dévouement à soutenir des projets
+         innovants ont été un atout majeur pour notre accompagnement. "</blockquote>
+      <p class="author">— Alice Dupuis</p>
+    </div>
+  </div>
+</section>
+
+<!-- Inscription à la brochure -->
+<section class="newsletter-cta">
+  <p>Envie d’en savoir plus ? <a href="{{ path('app_register') }}">Inscrivez-vous ici</a> pour recevoir notre mini-brochure pleine d’astuces gratuites !</p>
+</section>
+
+<!-- Réseaux sociaux -->
+<section class="social-follow">
+  <h2>Suivez-nous</h2>
+  <div class="social-icons">
+    <a href="https://instagram.com/toncompte" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://facebook.com/toncompte" target="_blank" rel="noopener" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com/toncompte" target="_blank" rel="noopener" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+  </div>
+</section>
+
+
 {% endblock %}
+
 

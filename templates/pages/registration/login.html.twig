@@ -3,7 +3,13 @@
 {% block title %}Connexion{% endblock %}
 
 {% block content %}
-    {# Affichage des flash messages #}
+
+    <div class="login-intro">
+        <h2>Connectez-vous à votre espace 🎨</h2>
+        <p>Accédez à votre guide gratuit, suivez vos projets et bénéficiez de notre accompagnement artistique.</p>
+    </div>
+
+    {# Affichage des messages flash #}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
             <div class="alert alert-{{ label }}">
@@ -12,56 +18,38 @@
         {% endfor %}
     {% endfor %}
 
-    <div class="form-container"> <!-- Conteneur flex pour aligner à gauche -->
+    <div class="form-container">
         <form action="{{ path('app_connexion') }}" method="post">
             <div class="form-group">
                 <label for="email">Adresse Email</label>
-                <input type="text" id="email" name="email" value="{{ last_username }}" required="required" class="form-control" />
+                <input type="text" id="email" name="email" value="{{ last_username }}" required class="form-control" placeholder="exemple@domaine.com" />
             </div>
 
             <div class="form-group">
                 <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required="required" class="form-control" />
+                <input type="password" id="password" name="password" required class="form-control" placeholder="Votre mot de passe" />
             </div>
 
-            <button type="submit" class="btn btn-primary">Se connecter</button>
+            <button type="submit" class="btn btn-primary">🎯 Se connecter</button>
         </form>
 
-        {# Affichage du bouton de déconnexion si l'utilisateur est connecté #}
         {% if app.user %}
             <form action="{{ path('app_deconnexion') }}" method="post">
                 <button type="submit" class="btn btn-danger mt-3" style="width: 100%; font-weight: bold;">
-                    Déconnexion
+                    🔓 Déconnexion
                 </button>
             </form>
-
-            {# Script pour réinitialiser le formulaire et effacer les sessions après la déconnexion #}
-            <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                    // Réinitialiser le formulaire de connexion après déconnexion
-                    if (document.querySelector('form')) {
-                        document.querySelector('form').reset();  // Effacer les valeurs
-                    }
-                    // Effacer également les champs de session, si besoin
-                    sessionStorage.clear();  // Si tu utilises sessionStorage
-                    localStorage.clear();  // Si tu utilises localStorage
-                });
-            </script>
         {% endif %}
     </div>
 
-    <p>Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">S'inscrire</a></p>
-    
-  
-    
-    {# Lien pour réinitialiser le mot de passe #}
-    <p><a href="{{ path('app_forgotpassword') }}">Mot de passe oublié ?</a></p>
-    
-  
-    
-        <a href="{{ path('app_home') }}">Retour à l'accueil</a>
-    </p>
+    <div class="extra-links">
+        <p>Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">S'inscrire</a></p>
+        <p><a href="{{ path('app_forgotpassword') }}">Mot de passe oublié ?</a></p>
+        <a href="{{ path('app_home') }}" class="btn btn-light">🏠 Retour à l'accueil</a>
+    </div>
+
 {% endblock %}
+
 
 
 

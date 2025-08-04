@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f0d5747de67b904844784abb483a955",
+    "content-hash": "1fa9fb4254ef4080c422cc56e3976dc2",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -1095,16 +1095,16 @@
         },
         {
             "name": "doctrine/mongodb-odm-bundle",
-            "version": "5.1.0",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMongoDBBundle.git",
-                "reference": "33a9d71d8df6745120cc9b8e3bbdda0d8ff25345"
+                "reference": "6cd47b8e1e564a72ea5225380287d2100fc205b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMongoDBBundle/zipball/33a9d71d8df6745120cc9b8e3bbdda0d8ff25345",
-                "reference": "33a9d71d8df6745120cc9b8e3bbdda0d8ff25345",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMongoDBBundle/zipball/6cd47b8e1e564a72ea5225380287d2100fc205b0",
+                "reference": "6cd47b8e1e564a72ea5225380287d2100fc205b0",
                 "shasum": ""
             },
             "require": {
@@ -1123,21 +1123,21 @@
                 "symfony/options-resolver": "^6.4 || ^7.0"
             },
             "conflict": {
-                "doctrine/data-fixtures": "<1.3"
+                "doctrine/data-fixtures": "<1.8 || >=3"
             },
             "require-dev": {
+                "composer/semver": "^3.4",
                 "doctrine/coding-standard": "^11.0",
-                "doctrine/data-fixtures": "^1.7",
+                "doctrine/data-fixtures": "^1.8 || ^2.0",
+                "phpstan/phpstan": "^2.0",
                 "phpunit/phpunit": "^9.5.5",
-                "psalm/plugin-symfony": "^5.0",
                 "symfony/browser-kit": "^6.4 || ^7.0",
                 "symfony/form": "^6.4 || ^7.0",
                 "symfony/phpunit-bridge": "^6.4.1 || ^7.0.1",
                 "symfony/security-bundle": "^6.4 || ^7.0",
                 "symfony/stopwatch": "^6.4 || ^7.0",
                 "symfony/validator": "^6.4 || ^7.0",
-                "symfony/yaml": "^6.4 || ^7.0",
-                "vimeo/psalm": "^5.25"
+                "symfony/yaml": "^6.4 || ^7.0"
             },
             "suggest": {
                 "doctrine/data-fixtures": "Load data fixtures"
@@ -1175,9 +1175,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineMongoDBBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineMongoDBBundle/tree/5.1.0"
+                "source": "https://github.com/doctrine/DoctrineMongoDBBundle/tree/5.2.0"
             },
-            "time": "2024-11-04T08:53:08+00:00"
+            "time": "2025-01-29T17:34:38+00:00"
         },
         {
             "name": "doctrine/orm",
@@ -7873,7 +7873,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
@@ -7881,6 +7881,6 @@
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

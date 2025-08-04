@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ODM\MongoDB\DocumentManager; // Import de la classe DocumentManager pour MongoDB
 
 class ContactController extends AbstractController
 {
@@ -57,6 +58,24 @@ class ContactController extends AbstractController
         return $this->render('pages/user/contact.html.twig', [
             'form' => $form->createView(), // Création du formulaire à afficher dans la vue
         ]);
+    }
+
+    // Route pour tester l'intégration avec MongoDB
+    #[Route('/test-mongo', name: 'test_mongo')]
+    public function testMongo(DocumentManager $dm): Response
+    {
+        // Crée un nouveau contact
+        $contact = new Contact();
+        $contact->setName('Test Mongo');
+        $contact->setEmail('test@mongo.com');
+        $contact->setMessage('This is a MongoDB test message.');
+
+        // Persiste et enregistre le contact dans MongoDB
+        $dm->persist($contact);
+        $dm->flush();
+
+        // Retourne une réponse après l'ajout du contact
+        return new Response('Contact ajouté à MongoDB!');
     }
 }
 

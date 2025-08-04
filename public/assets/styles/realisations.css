@@ -1,108 +1,183 @@
-.realization {
+.realizations-page {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
     font-family: 'Cinzel', serif;
+    color: #316630;
+    background-color: #fef6f9;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(49, 102, 48, 0.1);
 }
 
-.intro p, .accompagnement h3, .accompagnement p {
-    background-color: #594e4e;  /* Ajout de la couleur de fond */
-    padding: 10px;  /* Ajout du padding */
-}
-
-/* Section des réalisations */
-.realizations-section {
-    padding: 40px;
-    background: white;
+.realizations-header {
     text-align: center;
-    border-radius: 10px;
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap; /* Permet de faire "reculer" les éléments si besoin */
-    justify-content: space-between;
+    margin-bottom: 50px;
 }
 
-.realizations-section h2 {
-    font-size: 32px;
-    color: #000000;
-    margin-bottom: 40px;
-    width: 100%;  /* S'assure que le titre occupe toute la largeur */
+.realizations-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: #4a7c59;
+    margin-bottom: 15px;
 }
 
-/* Réalisation individuelle */
-.realization {
-    background: #594e4e;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.realizations-header p {
+    font-size: 1.15rem;
+    color: #6b9a6a;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(255, 187, 204, 0.3);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease;
-    width: 20%;  /* Pour les écrans larges */
-    margin: 0 10px; /* Espacement horizontal entre les éléments */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Effet au survol des projets */
-.realization:hover {
-    transform: scale(1.05);
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(255, 187, 204, 0.5);
 }
 
-/* Style de l'image dans chaque projet */
-.realization img {
+.project-card img {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    height: 180px;
     object-fit: cover;
+    border-bottom: 4px solid #ffbbcc;
+    border-radius: 15px 15px 0 0;
 }
 
-/* Titre de chaque projet */
-.realization h3 {
-    font-size: 24px;
-    color: #000000;
+.project-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #4a7c59;
     margin-bottom: 10px;
+}
+
+.project-info .tag {
+    font-size: 1rem;
+    color: #ff8faf;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.project-info p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.realizations-quote {
+    margin-top: 50px;
     text-align: center;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: #7fbb7f;
+    padding: 20px 40px;
+    border-left: 4px solid #ffbbcc;
+    background-color: #fff5f7;
+    border-radius: 10px;
 }
 
-/* Texte de description sous chaque projet */
-.realization p {
-    font-size: 16px;
-    color: #ffffff;
-    line-height: 1.6;
-    text-align: center;
-    margin-bottom: 20px;
-}
+/* Responsive */
 
-/* Media Queries pour la Responsivité */
-
-/* Pour les écrans de taille moyenne (tablettes) */
-@media (max-width: 1024px) {
-    .realizations-section {
-        padding: 20px; /* Réduit le padding pour les tablettes */
+/* Très petits écrans (mobiles très petits) */
+@media (max-width: 400px) {
+    .realizations-header h1 {
+        font-size: 1.8rem;
     }
 
-    .realization {
-        width: 48%; /* Deux éléments par ligne sur les tablettes */
-        margin-bottom: 20px;
-    }
-}
-
-/* Pour les petits écrans (mobiles) */
-@media (max-width: 767px) {
-    .realizations-section {
-        padding: 20px;
+    .realizations-header p {
+        font-size: 1rem;
+        max-width: 90%;
     }
 
-    .realization {
-        width: 100%; /* Chaque réalisation prend toute la largeur sur mobile */
-        margin-bottom: 20px;
+    .project-card img {
+        height: 140px;
     }
 
-    .realization h3 {
-        font-size: 20px; /* Réduire la taille du titre */
+    .project-info h2 {
+        font-size: 1.3rem;
     }
 
-    .realization p {
-        font-size: 14px; /* Réduire la taille du texte dans la description */
+    .project-info p,
+    .project-info .tag {
+        font-size: 0.9rem;
     }
 }
+
+/* Petits écrans mobiles et tablettes */
+@media (max-width: 768px) {
+    .realizations-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .realizations-header p {
+        font-size: 1.1rem;
+    }
+
+    .project-card img {
+        height: 160px;
+    }
+
+    .project-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .project-info p,
+    .project-info .tag {
+        font-size: 0.95rem;
+    }
+}
+
+/* Moyens écrans */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .realizations-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .realizations-header p {
+        font-size: 1.15rem;
+    }
+
+    .project-card img {
+        height: 180px;
+    }
+
+    .project-info h2 {
+        font-size: 1.7rem;
+    }
+
+    .project-info p,
+    .project-info .tag {
+        font-size: 1rem;
+    }
+}
+
+/* Grands écrans - rien à changer, base par défaut */
+
+
+
+
+
+
 

@@ -1,149 +1,220 @@
-/* Style général du formulaire */
-form {
-    background: linear-gradient(to right, #594e4e, #a88d8d);
-
+/* --------- Conteneur principal --------- */
+/* Conteneur utilisé pour les formulaires d'inscription et de connexion */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
     padding: 30px;
-    border-radius: 12px; /* Coins légèrement arrondis */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Ombre plus douce */
-    width: 100%;
-    max-width: 500px; /* Formulaire légèrement plus étroit */
-    margin: 20px auto; /* Centre le formulaire avec moins de marges */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Ajout d'une animation */
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-form:hover {
-    transform: scale(1.02); /* Léger zoom au survol */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Ombre accentuée au survol */
-}
-
-/* Titre du formulaire */
-form h1 {
+/* --------- Introduction artistique --------- */
+/* Section d’introduction visible uniquement sur la page d’inscription */
+.signup-intro {
     text-align: center;
-    margin-bottom: 25px;
-    font-size: 24px;
-    color: #051065; /* Violet élégant */
-    font-family: 'Cinzel', serif; /* Police stylisée */
-    text-transform: uppercase;
-    letter-spacing: 2px; /* Espacement pour un effet moderne */
+    margin-bottom: 30px;
+    /* Dégradé vert pastel vers rose pastel */
+    background: linear-gradient(120deg, #a8d5ba, #f7c6c7);
+    padding: 20px;
+    border-radius: 16px;
+    color: #3a5a40; /* texte vert foncé */
 }
 
-/* Groupes de formulaire */
-form .form-group {
-    margin-bottom: 15px;
+.signup-intro h2 {
+    font-size: 1.8rem;
+    color: #3a5a40; /* vert foncé */
+    margin-bottom: 10px;
+    font-weight: 700;
 }
 
-/* Labels de formulaire */
-form .form-group label {
-    display: block;
-    font-size: 14px;
+.signup-intro p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #6b4c4c; /* rose foncé */
+    font-style: italic;
+}
+
+.signup-intro ul {
+    list-style: none;
+    padding: 0;
+}
+
+.signup-intro ul li {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: #6b4c4c; /* rose foncé */
+}
+
+/* --------- Champs du formulaire --------- */
+/* Styles généraux pour tous les champs des formulaires inscription et connexion */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
     font-weight: 600;
-    color: #555; /* Gris foncé pour les labels */
-    margin-bottom: 5px;
-    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 6px;
+    /* Couleur vert foncé pour cohérence */
+    color: #3a5a40;
 }
 
-form .form-group label:hover {
-    color: #6e0108; /* Rouge au survol */
-}
-
-/* Entrées de formulaire */
-form .form-group input,
-form .form-group textarea {
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="tel"] {
     width: 100%;
-    padding: 12px 15px;
-    font-size: 14px;
-    border: 1px solid #ccc; /* Bordure discrète */
-    border-radius: 6px; /* Coins arrondis */
-    background-color: #f7f7f7;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 1.5px solid #a8d5ba; /* bord vert clair */
+    border-radius: 8px;
+    transition: border 0.3s ease;
 }
 
-/* Effet de focus sur les champs */
-form .form-group input:focus,
-form .form-group textarea:focus {
-    border-color: #6e0108; /* Rouge élégant */
-    box-shadow: 0 0 6px rgba(110, 1, 8, 0.4); /* Effet lumineux */
+.form-group input:focus {
+    border-color: #f7c6c7; /* rose clair au focus */
     outline: none;
 }
 
-/* Bouton de soumission */
-form .btn {
-    background-color: #6e0108;
+/* --------- Bouton --------- */
+/* Bouton principal d'envoi pour inscription et connexion */
+button.btn-primary {
+    background-color: #a8d5ba; /* vert clair */
     color: white;
+    font-weight: bold;
     border: none;
     padding: 12px 20px;
-    font-size: 16px;
-    font-weight: bold;
     border-radius: 8px;
-    cursor: pointer;
     width: 100%;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease;
 }
 
-form .btn:hover {
-    background-color: #540168; /* Couleur plus foncée */
-    transform: translateY(-2px); /* Légère élévation */
+button.btn-primary:hover {
+    background-color: #f7c6c7; /* rose clair au hover */
+    color: #3a5a40; /* texte vert foncé */
 }
 
-/* Messages de succès/erreur */
+/* --------- CGU et Captcha simplifiés --------- */
+/* Styles pour les checkboxes d'inscription (cgu, captcha) */
+.checkbox-line {
+    margin: 15px 0;
+    font-size: 0.95rem;
+    color: #6b4c4c; /* rose foncé */
+}
+
+.checkbox-line input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.1);
+}
+
+.checkbox-line a {
+    color: #a8d5ba; /* vert clair */
+    text-decoration: underline;
+}
+
+.checkbox-line a:hover {
+    text-decoration: none;
+}
+
+/* --------- Liens secondaires --------- */
+/* Liens classiques pour toutes les pages (inscription et connexion) */
+p a {
+    color: #a8d5ba; /* vert clair */
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+p a:hover {
+    text-decoration: none;
+}
+
+/* Bouton de retour ou actions secondaires */
+.btn-light {
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #f5f5f5;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #3a5a40; /* vert foncé */
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-light:hover {
+    background-color: #a8d5ba; /* vert clair */
+    color: white;
+}
+
+/* --------- Flash messages --------- */
+/* Messages de succès et erreurs, utilisés sur toutes les pages */
 .alert {
-    padding: 10px 15px;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    font-size: 14px;
-    transition: opacity 0.3s ease;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.alert-success {
+    background-color: #d4edda; /* vert très clair */
+    color: #155724; /* vert foncé */
+}
+
+.alert-error,
+.alert-danger {
+    background-color: #f7c6c7; /* rose clair */
+    color: #6b4c4c; /* rose foncé */
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+} 
+
+/* --------- Intro Connexion --------- */
+.login-intro {
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(120deg, #f7c6c7, #a8d5ba); /* rose pastel → vert pastel */
+    padding: 25px;
+    border-radius: 16px;
+    color: #3a5a40;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.login-intro h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #3a5a40;
+}
+
+.login-intro p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* --------- Liens supplémentaires --------- */
+.extra-links {
+    margin-top: 20px;
     text-align: center;
 }
 
- .alert-success {
-    background-color: #d4edda; /* Vert clair */
-    color: #155724;
-    border: 1px solid #c3e6cb;
+.extra-links p {
+    margin: 8px 0;
+    color: #555;
 }
 
-.alert-danger {
-    background-color: #f8d7da; /* Rouge clair */
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+.extra-links a {
+    color: #a84f57;
+    text-decoration: underline;
+    font-weight: 500;
 }
 
-/* Conteneur du formulaire */
-.form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    min-height: 100vh; /* Formulaire centré verticalement */
-    background-color: #ffffff; /* Fond général */
+.extra-links a:hover {
+    text-decoration: none;
+    color: #6b3f44;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    form {
-        padding: 20px;
-    }
 
-    form h1 {
-        font-size: 20px;
-    }
-
-    form .btn {
-        padding: 10px 16px;
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    form {
-        padding: 15px;
-    }
-
-    form h1 {
-        font-size: 18px;
-    }
-
-    form .btn {
-        padding: 8px 12px;
-        font-size: 12px;
-    }
-}

@@ -1,107 +1,141 @@
- /* Assurer que le footer touche le bas de la page */
- html, body {
-    min-height: 100vh; /* Force le body à occuper toute la hauteur de la fenêtre */
-    display: flex;
-    flex-direction: column;
-    margin: 0; /* Supprime la marge par défaut */
-}
-
-/* Le footer doit rester en bas de la page, même s'il n'y a pas beaucoup de contenu */
-body > *:not(footer) {
-    flex-grow: 1; /* Ce contenu pousse le footer vers le bas */
-}
-
-/* Footer */
-footer {
-    position: relative;
-    width: 100%;
-    background-color: #18011f;
-    color: white;
-    padding: 20px 15px; /* Padding ajusté pour réduire l'espace */
-    min-height: 120px; /* Hauteur minimale du footer */
-    font-family: 'Cinzel', serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Centre les éléments verticalement */
-    margin-top: auto; /* Le footer prend le bas de la page */
-}
-
-/* Conteneur du footer */
-footer .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    max-width: 1200px;
-    width: 100%;
+/* FOOTER STYLES - Compact amélioré */
+.footer {
+    background-color: #fdc6bc; 
+    color: #2c2828;
+    padding: 10px 0; /* Réduit la hauteur du footer */
     text-align: center;
+    position: relative;
+    font-size: 14px; /* taille globale un peu plus petite */
 }
 
-/* Logo à gauche en bas */
-footer .footer-logo {
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
+.footer-description {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-social-links {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    margin: 8px 0; /* Réduit l'espacement */
+    flex-wrap: wrap;
+    border-bottom: 1.5px solid #0a0a0a;
+    padding-bottom: 10px;
+    gap: 30px;
 }
 
-footer .footer-logo img {
-    height: 80px; /* Ajuste la hauteur du logo */
-    width: 190px; /* Largeur du logo */
+.footer-social-column,
+.footer-legal-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 160px; /* plus compact */
+    text-align: left;
 }
 
-/* Liens des réseaux sociaux */
-footer ul li a {
+.footer-social-icons,
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Espacement réduit entre les liens */
+}
+
+.footer-social-icons li,
+.footer-links li {
+    margin-bottom: 3px; /* Réduit la marge entre les éléments */
+}
+
+.footer-newsletter {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.footer-newsletter p {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.footer-year {
+    margin-top: 8px;
+    color: #316630;
+    font-size: 1.4rem;
+}
+
+/* Styles des liens */
+.footer-link {
     text-decoration: none;
-    color: rgb(255, 255, 255);
-    font-size: 1.5rem;
+    color:#316630;
+    font-size: 1.2rem;
     transition: color 0.3s ease;
-    font-weight: bold;
-    
 }
 
-footer ul li a:hover {
-    color: #6e0108;
+.footer-link:hover {
+    color: #863a2b;
 }
 
-/* Sections des réseaux sociaux et newsletter */
-footer .footer-title {
-    font-size: 2.0rem;
-    margin-bottom: 15px;
-
+/* Titres */
+.footer-title {
+    font-size: 1.1rem;
+    font-family: 'Playfair Display', serif;
+    color: #2c2828;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
 }
 
-
-
-
-/* Responsive : Pour les petits écrans */
-@media screen and (max-width: 768px) {
-    footer .container {
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-social-links {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .footer-social-column,
+    .footer-legal-column {
         text-align: center;
+        min-width: auto;
+        flex: none;
     }
 
-    footer .footer-logo img {
-        height: 60px;
-        width: 180px;
+    .footer-social-icons,
+    .footer-links {
+        align-items: center;
+        flex-direction: column;
+        gap: 6px;
     }
 
-    footer ul li a {
-        font-size: 1.3rem; /* Ajuste la taille des liens */
+    .footer-newsletter {
+        text-align: center;
     }
 }
 
-@media screen and (max-width: 480px) {
-    footer .footer-logo img {
-        height: 60px;
-        width: 160px;
+@media (max-width: 480px) {
+    .footer-title {
+        font-size: 1rem;
     }
 
-    footer ul li a {
-        font-size: 1.2rem; /* Ajuste pour les mobiles */
+    .footer-link {
+        font-size: 0.9rem;
+    }
+
+    .footer-newsletter p {
+        font-size: 0.8rem;
+    }
+
+    .footer-year {
+        font-size: 0.7rem;
     }
 }
 

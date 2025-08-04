@@ -18,7 +18,7 @@ class PasswordResetController extends AbstractController
     private EntityManagerInterface $entityManager;
     private BrevoMailer $brevoMailer;
 
-    // Injection des services nécessaires via le constructeur
+    // Injection des services 
     public function __construct(
         UserPasswordHasherInterface $passwordHasher,
         EntityManagerInterface $entityManager,
@@ -29,7 +29,7 @@ class PasswordResetController extends AbstractController
         $this->brevoMailer = $brevoMailer;
     }
 
-    // Route pour envoyer l'email de réinitialisation du mot de passe
+    // Route pour envoyer l'email de réinitialisation du mdp
     #[Route('/forgot_password', name: 'app_forgotpassword', methods: ['GET', 'POST'])]
     public function forgotPassword(Request $request, UserRepository $userRepository, TokenGeneratorInterface $tokenGenerator): Response
     {

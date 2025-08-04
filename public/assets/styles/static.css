@@ -1,0 +1,94 @@
+/* === SECTION NEWSLETTER === */
+#newsletter-form {
+    background-color: #fef6f9; /* rose très clair */
+    padding: 40px 30px;
+    max-width: 500px;
+    margin: 50px auto;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    color: #316630; /* vert sauge */
+}
+
+#newsletter-form h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #316630;
+}
+
+#newsletter-form p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: #444;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #316630;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #ffbbcc;
+    box-shadow: 0 0 5px rgba(255, 187, 204, 0.3);
+}
+
+.btn.btn-primary {
+    background-color: #ffbbcc;
+    color: #316630;
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn.btn-primary:hover {
+    background-color: #ffe2ea;
+    color: #000;
+}
+
+#newsletter-error {
+    font-size: 0.85rem;
+    color: red;
+    display: none;
+}
+
+/* === Responsive === */
+@media (max-width: 480px) {
+    #newsletter-form {
+        padding: 30px 20px;
+    }
+
+    #newsletter-form h1 {
+        font-size: 1.6rem;
+    }
+
+    .btn.btn-primary {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+
+
