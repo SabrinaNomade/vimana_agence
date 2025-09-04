@@ -33,6 +33,34 @@ class AdminUserController extends AbstractController
         // Recherche l'utilisateur en fonction de l'ID passé dans l'URL
         $user = $userRepository->find($id);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
         // Si l'utilisateur n'est pas trouvé, on affiche un message d'erreur
         if (!$user) {
             $this->addFlash('danger', 'Utilisateur non trouvé.');

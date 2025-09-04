@@ -29,7 +29,7 @@ class PasswordResetController extends AbstractController
         $this->brevoMailer = $brevoMailer;
     }
 
-    // Route pour envoyer l'email de réinitialisation du mdp
+    // Route pour envoyer l'email de réinitialisation du mdp (route pour envoyer l'email pour envoyer)
     #[Route('/forgot_password', name: 'app_forgotpassword', methods: ['GET', 'POST'])]
     public function forgotPassword(Request $request, UserRepository $userRepository, TokenGeneratorInterface $tokenGenerator): Response
     {
@@ -38,7 +38,8 @@ class PasswordResetController extends AbstractController
             $user = $userRepository->findOneBy(['email' => $email]);
 
             if ($user) {
-                // Génère un token de réinitialisation unique
+                // Génère un token de réinitialisation unique() a utiliser q'unen seule fois )
+
                 $token = $tokenGenerator->generateToken();
                 $user->setResetToken($token);
                 $this->entityManager->flush(); // Sauvegarde le token dans la base de données
@@ -46,7 +47,7 @@ class PasswordResetController extends AbstractController
                 // Génère l'URL pour réinitialiser le mot de passe
                 $resetUrl = $this->generateUrl('app_resetpassword', ['token' => $token], 0); // URL sans le domaine
 
-                // Envoie l'email de réinitialisation via le service BrevoMailer
+                // Envoie l'email de réinitialisation via le service BrevoMailer (modifier l'api recuperer)
                 $response = $this->brevoMailer->sendPasswordResetEmail($email, $resetUrl);
 
                 if (isset($response['error'])) {
