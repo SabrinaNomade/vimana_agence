@@ -15,7 +15,11 @@
     <meta property="og:image" content="{{ asset('assets/images/hero-image.webp') }}">
     <meta property="og:url" content="{{ app.request.uri }}">
 
-    <!-- CSS personnalisé -->
+    <!-- ✅ Bootstrap d'abord -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- fichiers CSS personnalisés ensuite -->
     <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/styles/form-styles.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/styles/footer.css') }}">
@@ -25,69 +29,53 @@
     <link rel="stylesheet" href="{{ asset('assets/styles/realisations.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/styles/static.css') }}">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Open+Sans&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Cookie Consent -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
 </head>
+
 <body>
 
 <!-- Navigation -->
 <nav class="navbar" role="navigation">
-    <div class="logo">
-        <a href="{{ path('app_home') }}">
-            <img src="{{ asset('assets/images/vimana_paris_conseil_logo.webp') }}" alt="Logo Vimana Paris – Agence de conseil pour artistes">
+    <div class="brand">
+        <a href="{{ path('app_home') }}" class="logo">
+            <img src="{{ asset('assets/images/logo-v.webp') }}" alt="Logo Vimana Paris – Agence artistique">
         </a>
         <span class="brand-name">Vimana Paris</span>
     </div>
-    <button class="nav-toggle" aria-label="Menu">☰</button>
+
+    <!-- Burger menu -->
+    <button class="nav-toggle" aria-label="Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <!-- Liens -->
     <ul class="nav-links">
+        <li><a href="{{ path('app_home') }}">Accueil</a></li>
+        <li><a href="{{ path('app_expertise') }}">Formations & Modules</a></li>
+        <li><a href="{{ path('app_realisations') }}">Projets réalisés</a></li>
+        <li><a href="{{ path('app_contact') }}">Qui est Vimana ?</a></li>
         <li>
-            <a href="{{ path('app_home') }}" aria-current="page" title="Accueil de Vimana Paris">
-                Accueil
-                <small class="nav-sub">La meilleure agence (promis 😉)</small>
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('app_expertise') }}" title="Nos super-pouvoirs">
-                Notre Expertise
-                <small class="nav-sub">Nos super-pouvoirs</small>
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('app_realisations') }}" title="Découvrez nos réalisations">
-                Nos Réalisations
-                <small class="nav-sub">Tu me connais pas ? Regarde ça 👀</small>
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('app_contact') }}" title="Contactez-nous">
-                Contact
-                <small class="nav-sub">Viens, on papote ☕</small>
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('app_register') }}" title="Rejoignez l’aventure Vimana">
-                Inscription
-                <small class="nav-sub">Rejoins l’aventure Vimana ✨</small>
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('app_connexion') }}" title="Connexion à Vimana">
-                Connexion
-                <small class="nav-sub">Entre dans la galaxie Vimana 🚀</small>
+            <a href="{{ path('app_auth') }}" class="nav-icon-link">
+                <i class="bi bi-person-circle"></i>
             </a>
         </li>
     </ul>
 </nav>
+
 <div class="navbar-spacer"></div>
+
 
 <!-- Bloc Hero -->
 {% block hero %}{% endblock %}
@@ -98,48 +86,48 @@
 {% endblock %}
 
 <!-- Footer complet -->
-<footer class="footer py-5 bg-dark text-white">
-    <div class="container text-center">
-        <p class="footer-description mb-4">
-            Vimana accompagne les artistes vers la réussite grâce à un réseau de professionnels et un suivi sur mesure.
-        </p>
-
-        <div class="footer-social-links d-flex flex-wrap justify-content-center gap-5 mb-4">
-            <!-- Réseaux sociaux -->
-            <div class="footer-social-column">
-                <h4 class="footer-title">Nous suivre</h4>
-                <ul class="footer-social-icons list-unstyled">
-                    <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fab fa-facebook"></i> Facebook</a></li>
-                    <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                </ul>
-            </div>
-
-            <!-- Informations légales -->
-            <div class="footer-legal-column">
-                <h4 class="footer-title">Informations</h4>
-                <ul class="footer-links list-unstyled">
-                    <li><a href="{{ path('mentions_legales') }}" class="footer-link">Mentions légales</a></li>
-                    <li><a href="{{ path('politique_confidentialite') }}" class="footer-link">Politique de confidentialité</a></li>
-                    <li><a href="{{ path('cgu') }}" class="footer-link">CGU</a></li>
-                    <li><a href="{{ path('app_contact') }}" class="footer-link">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Newsletter -->
-            <div class="footer-social-column">
-                <h4 class="footer-title">VimaNews</h4>
-                <form id="newsletter-form" class="footer-newsletter mb-2" action="{{ path('newsletter') }}" method="post">
-                    <input type="email" id="newsletter-email" name="email" placeholder="Votre email" required>
-                    <span id="newsletter-error" style="display:none; color:red; font-size:0.85rem;"></span>
-                    <button type="submit">S'inscrire</button>
-                </form>
-                <p><a href="{{ path('newsletter') }}" class="footer-link">Voir toutes les newsletters</a></p>
-            </div>
-        </div>
-
-        <div class="footer-year">© <span id="current-year"></span> Vimana Paris. Tous droits réservés.</div>
+<footer class="footer footer-artistic">
+  <div class="container">
+    <div class="footer-top text-center">
+      <p class="footer-description">
+        Vimana accompagne les artistes vers la réussite grâce à un réseau de professionnels et un suivi sur mesure.
+      </p>
     </div>
+
+    <div class="footer-main d-flex flex-wrap justify-content-between">
+      <div class="footer-column">
+        <h4 class="footer-title">Nous suivre</h4>
+        <ul class="footer-list list-unstyled">
+          <li><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+          <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-title">Informations</h4>
+        <ul class="footer-list list-unstyled">
+          <li><a href="{{ path('mentions_legales') }}">Mentions légales</a></li>
+          <li><a href="{{ path('politique_confidentialite') }}">Politique de confidentialité</a></li>
+          <li><a href="{{ path('cgu') }}">CGU</a></li>
+          <li><a href="{{ path('app_contact') }}">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-title">VimaNews</h4>
+        <form id="newsletter-form" class="footer-newsletter" action="{{ path('newsletter') }}" method="post">
+          <input type="email" id="newsletter-email" name="email" placeholder="Votre email" required>
+          <button type="submit">S'inscrire</button>
+        </form>
+        <p><a href="{{ path('newsletter') }}">Voir toutes les newsletters</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom text-center">
+      <p>© <span id="current-year"></span> Vimana Paris. Tous droits réservés.</p>
+    </div>
+  </div>
 </footer>
 
 <!-- JS -->
@@ -149,5 +137,26 @@
 <script src="{{ asset('assets/js/form-contact.js') }}" defer></script>
 <script src="{{ asset('assets/js/form-registration.js') }}" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" defer></script>
+
+<!-- BANNIÈRE COOKIES -->
+<!-- BANNIÈRE COOKIES MODERNE -->
+<div id="cookie-banner" class="cookie-banner" style="display:none;">
+  <div class="cookie-content">
+    <p>Nous utilisons des cookies pour améliorer votre expérience et analyser notre trafic. Vous pouvez accepter tous les cookies ou gérer vos préférences.</p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies" class="btn-cookies accept">Accepter</button>
+      <button id="refuse-cookies" class="btn-cookies refuse">Refuser</button>
+      <button id="manage-cookies" class="btn-cookies manage">Paramètres</button>
+    </div>
+    <div id="cookie-options" class="cookie-options" style="display:none;">
+      <h4>Choisissez vos cookies</h4>
+      <label><input type="checkbox" checked disabled> Cookies essentiels</label>
+      <label><input type="checkbox" id="analytics-cookies"> Cookies analytics</label>
+      <label><input type="checkbox" id="marketing-cookies"> Cookies marketing</label>
+      <button id="save-cookies" class="btn-cookies save">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

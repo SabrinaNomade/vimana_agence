@@ -2,113 +2,432 @@
 
 {% block content %}
 
-<section class="hero text-center py-5" role="banner" aria-label="Hero section - Accueil Vimana Paris">
-  <h1 id="hero-title">
-    Vimana Paris – Agence de conseil et accompagnement pour artistes
-  </h1>
-
-  <div class="typing-container">
-    <h2 id="hero-subtitle" aria-label="Conseil, production et événementiel culturel pour donner vie à vos projets artistiques">
-      Conseil, production et événementiel culturel pour donner vie à vos projets artistiques
-    </h2>
-    <span id="cursor" class="cursor"></span>
+<!-- HERO -->
+<section class="hero text-center" role="banner" aria-label="Hero section - Accueil Vimana Paris">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Vimana Paris</h1>
+    <h2 class="hero-subtitle">Agence de conseil et accompagnement pour artistes</h2>
+    <a href="{{ path('app_contact') }}" class="btn-animated">Premier rendez-vous offert</a>
+    <div class="hero-afdas">Formations financées par l’AFDAS</div>
   </div>
-
-  <a href="{{ path('app_contact') }}" class="btn mt-4">Contactez-nous</a>
 </section>
 
 
-<!-- Section Agence / Mission -->
-<section class="agency text-center py-5">
-    <div class="container">
-        <h2>Révéler le potentiel des artistes</h2>
-        <p>
-            Chez Vimana Paris, nous accompagnons les artistes à chaque étape de leurs projets culturels et créatifs, 
-            du conseil stratégique à la concrétisation de leurs idées, pour révéler leur talent et donner vie à leurs ambitions.
-        </p>
-        <a href="{{ path('app_register') }}" class="btn">Rejoignez l’aventure Vimana</a>
-    </div>
-</section>
+<!-- SECTION PRÉSENTATION -->
+ <section class="vimana-intro"> <div class="vimana-container">
+<h2>Au service des entreprises et des artistes</h2>
+ <p> Vimana est bien plus qu’une agence d’événementiel, c’est une agence d’expériences uniques, 
+ fusionnant le monde des entreprises avec l’essence vibrante de l’art et de la culture. </p> 
+ <p> Notre vocation est de vous accompagner dans l’organisation de vos événements en vous permettant de créer des projets originaux, 
+ créatifs, tout en vous offrant un gain de temps considérable. </p>
+  </div>
+  </section>
 
 
-<!-- FONDATRICE -->
-<section id="fondatrice" class="founder">
-    <div class="container">
-        <div class="founder-photo">
-            <img src="{{ asset('assets/images/vani_richard.webp') }}" alt="Vani Richard, fondatrice de Vimana Paris">
+<section class="formations">
+  <div class="container">
+    <h2>Nos Formations professionnelles, financée par l'AFDAS</h2>
+    <p>Découvrez nos différentes formations pour développer vos compétences dans le secteur culturel et artistique.</p>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <!-- Formation 1 -->
+      <div class="col">
+        <div class="formation-card">
+          <img src="/assets/images/Conseil-et-conference-Association-Artefac-2022.webp" 
+               alt="Budgétisation et production d'un projet">
+          <div class="card-content">
+            <i class="bi bi-calculator"></i>
+            <h3>Budgétisation et production d'un projet</h3>
+            <p>Apprenez à créer, structurer et gérer vos budgets. De l'estimation des coûts à la recherche de financements, cette formation vous donne les clés pour assurer la viabilité de votre projet.</p>
+            <a href="#" class="btn">En savoir plus</a>
+          </div>
         </div>
-        <div class="founder-bio">
-            <h2>Vani Richard</h2>
-            <p>Ancienne danseuse passionnée, Vani Richard a fondé Vimana Paris pour partager son amour de l'art et de la culture. Elle accompagne artistes et créateurs dans leur développement personnel et artistique.</p>
-            <!-- TEMPORAIRE : ancre locale au lieu de la route Symfony -->
-            <a href="#fondatrice" class="btn">En savoir plus</a>
+      </div>
+
+      <!-- Formation 2 -->
+      <div class="col">
+        <div class="formation-card">
+          <img src="/assets/images/VideoCapture_20240703-115157-1.webp" alt="Production et gestion d'un événement">
+          <div class="card-content">
+            <i class="bi bi-calendar-event"></i>
+            <h3>Production et gestion d'un événement</h3>
+            <p>Découvrez comment planifier, organiser et gérer des événements de A à Z. Cette formation aborde tous les aspects de la production événementielle, de la logistique à la communication.</p>
+            <a href="#" class="btn">En savoir plus</a>
+          </div>
         </div>
+      </div>
+
+      <!-- Formation 3 -->
+      <div class="col">
+        <div class="formation-card">
+          <img src="/assets/images/contrat.webp" alt="Montage d'une structure administrative et juridique">
+          <div class="card-content">
+            <i class="bi bi-building-gear"></i>
+            <h3>Montage d'une structure administrative et juridique</h3>
+            <p>Découvrez les étapes essentielles pour monter et administrer votre structure. Cette formation vous guide du choix du statut à la gestion quotidienne, pour sécuriser votre activité.</p>
+            <a href="#" class="btn">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formation 4 -->
+      <div class="col">
+        <div class="formation-card">
+          <img src="/assets/images/VideoCapture_20240703-105100 (1).webp" alt="Médiation culturelle">
+          <div class="card-content">
+            <i class="bi bi-people"></i>
+            <h3>Médiation culturelle : bases et formats</h3>
+            <p>Formez-vous à la médiation culturelle pour créer des liens entre les œuvres, les artistes et le public. Apprenez à concevoir et animer des actions adaptées à différents publics.</p>
+            <a href="#" class="btn">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formation 5 -->
+      <div class="col">
+        <div class="formation-card">
+          <img src="/assets/images/29764884_7517872.webp" alt="Professional English">
+          <div class="card-content">
+            <i class="bi bi-translate"></i>
+            <h3>Professional English – Dialogue Ease</h3>
+            <p>Perfectionnez votre anglais professionnel dans le domaine artistique et culturel pour échanger efficacement à l’international.</p>
+            <a href="#" class="btn">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formation 6 -->
+      <div class="col">
+        <div class="formation-card">
+          <img src="/assets/images/3425188_59890.webp" alt="Stratégie de diffusion">
+          <div class="card-content">
+            <i class="bi bi-broadcast-pin"></i>
+            <h3>Stratégie de diffusion – les bases</h3>
+            <p>Apprenez à développer la notoriété de vos projets et à construire un réseau professionnel durable grâce à une stratégie de diffusion efficace.</p>
+            <a href="#" class="btn">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
 
-<!-- Carrousel de projets -->
+<!-- À PROPOS / VALEURS COMPACTE -->
+<section class="agency agency-grid">
+  <div class="container">
+    <div class="text-column">
+      <h2>L’art mérite un accompagnement à sa hauteur</h2>
+      <p>
+        <strong>Vimana Paris</strong> accompagne les artistes émergents et les porteurs de projets dans le spectacle vivant pour structurer, professionnaliser et développer leurs projets.
+      </p>
+      <p>
+        Grâce à notre expertise transversale — gestion de projet, production, communication, financement — et notre approche humaine, nous permettons aux artistes de gagner en autonomie et en efficacité.
+      </p>
+      <p class="quote"><em>Votre talent mérite d’être vu, entendu et soutenu.</em></p>
+      <a href="{{ path('app_register') }}" class="btn">Rejoignez l’aventure Vimana</a>
+    </div>
+    <div class="image-column">
+      <img src="{{ asset('assets/images/concert.jpeg') }}" alt="Artiste en création">
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SERVICES PROPOSÉS -->
+<section class="services text-center py-5">
+  <div class="container">
+    <h2 class="mb-4 text-primary">Nos Modules d'accompagnement</h2>
+    <p class="mb-4">Découvrez nos trois formules pensées pour accompagner chaque étape de vos projets artistiques.</p>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- Module 1 -->
+      <div class="col-md-4">
+        <div class="service-card rounded h-100">
+          <div class="media-wrapper">
+            <video autoplay muted loop playsinline>
+              <source src="{{ asset('assets/images/vidéodecouverte.mp4') }}" type="video/mp4">
+              <img src="{{ asset('assets/images/decouverte.jpg') }}" alt="Module Démarrage">
+            </video>
+          </div>
+          <div class="card-content">
+            <h3>Module « Démarrage »</h3>
+            <p><strong>Structuration, budgétisation, définition des objectifs.</strong></p>
+            <p><strong>Durée :</strong> 1 à 3 mois</p>
+            <p><strong>Objectif :</strong> construire une base solide pour le futur développement du projet.</p>
+            <a href="#" class="btn">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="col-md-4">
+        <div class="service-card rounded h-100">
+          <div class="media-wrapper">
+            <video autoplay muted loop playsinline>
+              <source src="{{ asset('assets/images/vidéodecouverte.mp4') }}" type="video/mp4">
+              <img src="{{ asset('assets/images/decouverte.jpg') }}" alt="Module Développement">
+            </video>
+          </div>
+          <div class="card-content">
+            <h3>Module « Développement »</h3>
+            <p><strong>Administration & gestion, stratégie de financement, dossiers.</strong></p>
+            <p><strong>Durée :</strong> 2 à 6 mois</p>
+            <p><strong>Objectif :</strong> renforcer les compétences et ressources pour le développement d’un projet pérenne et autonome.</p>
+            <a href="#" class="btn">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="col-md-4">
+        <div class="service-card rounded h-100">
+          <div class="media-wrapper">
+            <video autoplay muted loop playsinline>
+              <source src="{{ asset('assets/images/vidéodecouverte.mp4') }}" type="video/mp4">
+              <img src="{{ asset('assets/images/decouverte.jpg') }}" alt="Module Diffusion">
+            </video>
+          </div>
+          <div class="card-content">
+            <h3>Module « Diffusion »</h3>
+            <p><strong>Contrats, tournée, communication, diffusion et réseau.</strong></p>
+            <p><strong>Durée :</strong> 2 à 6 mois</p>
+            <p><strong>Objectif :</strong> augmenter la notoriété du projet et développer les publics, tout en jonglant avec les nouvelles créations.</p>
+            <a href="#" class="btn">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CARROUSEL PROJETS RÉALISÉS -->
 <section class="projects py-5 bg-light text-center">
-    <div class="container">
-        <h2 class="mb-4">Quelques projets réalisés</h2>
-        <div id="carouselProjects" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-                        <div class="card" style="width:18rem;">
-                            <img src="{{ asset('assets/images/Captureguada.png') }}" class="card-img-top" alt="Projet 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Événement – Production</h5>
-                            </div>
-                        </div>
-                        <div class="card" style="width:18rem;">
-                            <img src="{{ asset('assets/images/livret-pedagogique-1-e1721300969742 (1).jpeg') }}" class="card-img-top" alt="Projet 2">
-                            <div class="card-body">
-                                <h5 class="card-title">Exposition Pays Mêlé</h5>
-                            </div>
-                        </div>
-                        <div class="card" style="width:18rem;">
-                            <img src="{{ asset('assets/images/Ode-à-la-mémoire-1.jpg') }}" class="card-img-top" alt="Projet 3">
-                            <div class="card-body">
-                                <h5 class="card-title">Empreintes et résilience</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <h2 class="mb-4">Quelques projets réalisés</h2>
+    <div id="carouselProjects" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+            <div class="card" style="width:18rem;">
+              <img src="{{ asset('assets/images/Captureguada.png') }}" class="card-img-top" alt="Projet 1">
+              <div class="card-body">
+                <h5 class="card-title">Événement – Production</h5>
+                <p class="card-text">Organisation d’événements et productions sur-mesure pour valoriser les artistes.</p>
+              </div>
             </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjects" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselProjects" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
+            <div class="card" style="width:18rem;">
+              <img src="{{ asset('assets/images/livret-pedagogique-1-e1721300969742 (1).jpeg') }}" class="card-img-top" alt="Projet 2">
+              <div class="card-body">
+                <h5 class="card-title">Exposition Pays Mêlé</h5>
+                <p class="card-text">Mise en avant des créations artistiques dans un espace d’exposition unique.</p>
+              </div>
+            </div>
+            <div class="card" style="width:18rem;">
+              <img src="{{ asset('assets/images/Ode-à-la-mémoire-1.jpg') }}" class="card-img-top" alt="Projet 3">
+              <div class="card-body">
+                <h5 class="card-title">Empreintes et résilience</h5>
+                <p class="card-text">Accompagnement complet du projet artistique de l’idée à la diffusion.</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+            <div class="card" style="width:18rem;">
+              <img src="{{ asset('assets/images/Captureguada.png') }}" class="card-img-top" alt="Projet 4">
+              <div class="card-body">
+                <h5 class="card-title">Création artistique</h5>
+                <p class="card-text">Développement de projets artistiques interdisciplinaires.</p>
+              </div>
+            </div>
+            <div class="card" style="width:18rem;">
+              <img src="{{ asset('assets/images/livret-pedagogique-1-e1721300969742 (1).jpeg') }}" class="card-img-top" alt="Projet 5">
+              <div class="card-body">
+                <h5 class="card-title">Atelier participatif</h5>
+                <p class="card-text">Implication du public dans des ateliers créatifs et pédagogiques.</p>
+              </div>
+            </div>
+            <div class="card" style="width:18rem;">
+              <img src="{{ asset('assets/images/Ode-à-la-mémoire-1.jpg') }}" class="card-img-top" alt="Projet 6">
+              <div class="card-body">
+                <h5 class="card-title">Performance visuelle</h5>
+                <p class="card-text">Création de performances audiovisuelles immersives.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+            <div class="card" style="width:18rem;">
+              <img src="{{ asset('assets/images/Captureguada.png') }}" class="card-img-top" alt="Projet 7">
+              <div class="card-body">
+                <h5 class="card-title">Scénographie</h5>
+                <p class="card-text">Création de scénographies sur mesure pour expositions et spectacles.</p>
+              </div>
+            </div>
+            <div class="card" style="width:18rem;">
+              <img src="{{ asset('assets/images/livret-pedagogique-1-e1721300969742 (1).jpeg') }}" class="card-img-top" alt="Projet 8">
+              <div class="card-body">
+                <h5 class="card-title">Installation artistique</h5>
+                <p class="card-text">Mise en espace d’œuvres collaboratives contemporaines.</p>
+              </div>
+            </div>
+            <div class="card" style="width:18rem;">
+              <img src="{{ asset('assets/images/Ode-à-la-mémoire-1.jpg') }}" class="card-img-top" alt="Projet 9">
+              <div class="card-body">
+                <h5 class="card-title">Projection immersive</h5>
+                <p class="card-text">Expériences visuelles interactives et immersives.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navigation -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjects" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselProjects" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
     </div>
+  </div>
+</section>
+
+<!-- SECTION FONDATRICE -->
+<section id="fondatrice" class="founder">
+  <div class="container">
+    <div class="founder-photo" data-animate="fade-right">
+      <img src="{{ asset('assets/images/portrait-officiel-VANI-RICHARD-1-scaled.webp') }}" alt="Vani Richard, fondatrice de Vimana Paris">
+    </div>
+    <div class="founder-bio" data-animate="fade-left">
+      <h3 class="section-subtitle">Fondatrice</h3>
+      <h2 class="section-title">Rencontrez Vani Richard</h2>
+      <blockquote class="founder-quote">
+        “L’art est un langage universel : il relie les êtres, les cultures et les mémoires.”
+      </blockquote>
+      <p>
+        <strong>Vani Richard</strong>, Danseuse et productrice culturelle, fonde <strong>Vimana Paris</strong> avec la conviction 
+        que chaque création peut devenir un espace de rencontre entre l’intime et le collectif.  
+        À travers ses projets, elle met en lumière la richesse du dialogue entre les disciplines artistiques 
+        et accompagne artistes, institutions et publics vers une expression authentique et sensible.
+      </p>
+      <p>
+        Son approche repose sur l’écoute, la transmission et la mise en valeur des singularités.  
+        Vimana Paris est ainsi un lieu de création, de production et de partage où l’humain reste au cœur de chaque démarche.
+      </p>
+      <div class="founder-links">
+        <a href="#presentation" class="btn">En savoir plus</a>
+        <a href="https://www.instagram.com/ton_compte_instagram" target="_blank" class="insta-link" aria-label="Instagram de Vani Richard">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- ILS NOUS FONT CONFIANCE -->
+<!-- ========================= -->
+<section class="trust-section">
+  <div class="container">
+    <h2 class="trust-title">Ils nous font confiance</h2>
+
+    <div class="trust-logos">
+      <img src="assets/images/PaysMele-Exposition-e1721468796137 (1).webp" alt="Entreprise 1">
+      <img src="assets/images/1 (1).webp" alt="Entreprise 2">
+      <img src="assets/images/2 (1).webp" alt="Entreprise 3">
+      <img src="assets/images/2-1.webp" alt="Entreprise 4">
+      <img src="assets/images/Flore-Kitchen-1.webp" alt="Entreprise 5">
+      <img src="assets/images/Onyo-1 (1).webp" alt="Entreprise 6">
+      <img src="assets/images/3 (2).webp" alt="Entreprise 7">
+      <img src="assets/images/8-1.webp" alt="Entreprise 8">
+      <img src="assets/images/Ensemble-Les-Apaches-1.webp" alt="Entreprise 9">
+      <img src="assets/images/Artefac-12042023.webp" alt="Entreprise 10">
+      <img src="assets/images/3-1.webp" alt="Entreprise 11">
+      <img src="assets/images/Logos-des-partenaires (1).webp" alt="Entreprise 12">
+      <img src="assets/images/Logo-PAGE-49.webp" alt="Entreprise 13">
+      <img src="assets/images/2.webp" alt="Entreprise 14">
+      <img src="assets/images/3 (1).webp" alt="Entreprise 15">
+      <img src="assets/images/9-1.webp" alt="Entreprise 16">
+      <img src="assets/images/Logos-des-partenaires-IESA-e1701771032695.webp" alt="Entreprise 17">
+      
+      
+    </div>
+  </div>
+</section>
+
+<!-- ========================= -->
+<!-- AVIS CLIENTS -->
+<!-- ========================= -->
+<section class="reviews-section">
+  <div class="container">
+    <h2 class="reviews-title">Avis de nos clients</h2>
+  
+
+    <div class="reviews-grid">
+
+      <!-- Carte d'avis - Reutilisable -->
+      <div class="review-card">
+        <div class="review-header">
+          <img src="assets/images/vimana-logo.webp" alt="Photo profil" class="review-avatar">
+          <div>
+            <h4>Vimana Paris</h4>
+            <span>@vimanaparis</span>
+          </div>
+        </div>
+
+        <p class="review-text">
+          “Un accompagnement exceptionnel ! Une équipe bienveillante, professionnelle et très à l’écoute.”
+        </p>
+
+        <a href="https://www.instagram.com/reel/C9VF41PNadj/" target="_blank" class="review-btn">
+          Voir sur Instagram
+        </a>
+      </div>
+
+      <!-- Duplique cette card pour 8 avis -->
+      <div class="review-card">
+        <div class="review-header">
+          <img src="assets/images/vimana-logo.webp" alt="Photo profil" class="review-avatar">
+          <div>
+            <h4>Vimana Paris</h4>
+            <span>@vimanaparis</span>
+          </div>
+        </div>
+        <p class="review-text">
+          “Un accompagnement exceptionnel ! Une équipe bienveillante, professionnelle et très à l’écoute.”
+        </p>
+        <a href="https://www.instagram.com/reel/C9VF41PNadj/" target="_blank" class="review-btn">
+          Voir sur Instagram
+        </a>
+      </div>
+
+    </div>
+
+  </div>
 </section>
 
 
-<!-- Témoignage -->
-<section class="testimonial py-5 text-center">
-    <div class="container">
-        <blockquote class="blockquote">
-            <p>"Un accompagnement exceptionnel !" – Artiste X</p>
-        </blockquote>
-    </div>
-</section>
-
-
-<!-- Call to Action final -->
+<!-- CTA FINAL -->
 <section class="cta text-center py-5">
-    <div class="container">
-        <h2>Prêt.e à développer vos projets artistiques ?</h2>
-        <div class="mt-3">
-          <a href="#" class="btn btn-light">Contact</a>
-
-           <a href="#" class="btn btn-outline-light">Prendre rendez-vous</a>
-
-        </div>
+  <div class="container">
+    <h2>Prêt.e à développer vos projets artistiques ?</h2>
+    <div class="mt-3">
+      <a href="#" class="btn btn-light">Contact</a>
+      <a href="#" class="btn btn-outline-light">Prendre rendez-vous</a>
     </div>
+  </div>
 </section>
 
 {% endblock %}

@@ -37,7 +37,7 @@ class PasswordResetController extends AbstractController
             $email = $request->get('email');
             $user = $userRepository->findOneBy(['email' => $email]);
 
-            if ($user) {
+            if ($user) { 
                 // Génère un token de réinitialisation unique() a utiliser q'unen seule fois )
 
                 $token = $tokenGenerator->generateToken();

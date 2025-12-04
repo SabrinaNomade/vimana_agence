@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion / Inscription{% endblock %}
+
+{% block content %}
+
+<div class="auth-wrapper">
+
+    <h2 class="auth-title">Bienvenue sur Vimana Paris 🎨</h2>
+
+    <p class="auth-subtitle">
+        Accédez à votre espace, suivez vos projets, recevez nos actualités et soyez informé(e)
+        des prochains webinaires dédiés aux artistes.
+    </p>
+
+    <div class="auth-tabs">
+
+        <!-- Connexion -->
+        <div class="auth-box">
+            <h3>Connexion</h3>
+
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+            <form action="{{ path('app_connexion') }}" method="post">
+                <input type="text" name="email" placeholder="Email" required value="{{ last_username }}">
+                <input type="password" name="password" placeholder="Mot de passe" required>
+
+                <button type="submit">Se connecter</button>
+                <p class="forgot-pass">
+    <a href="{{ path('app_forgotpassword') }}">Mot de passe oublié ?</a>
+</p>
+
+            </form>
+        </div>
+
+        <!-- Inscription -->
+        <div class="auth-box">
+            <h3>Inscription</h3>
+
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">{{ message }}</div>
+                {% endfor %}
+            {% endfor %}
+
+            {{ form_start(registerForm) }}
+
+                {{ form_widget(registerForm.email, {'attr': {'placeholder': 'Email'}}) }}
+                {{ form_widget(registerForm.firstName, {'attr': {'placeholder': 'Prénom'}}) }}
+                {{ form_widget(registerForm.plainPassword.first, {'attr': {'placeholder': 'Mot de passe'}}) }}
+                {{ form_widget(registerForm.plainPassword.second, {'attr': {'placeholder': 'Confirmer mot de passe'}}) }}
+
+                <button type="submit">Créer un compte</button>
+
+            {{ form_end(registerForm) }}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
