@@ -3,31 +3,78 @@
 {% block content %}
 
 <!-- HERO -->
-<section class="hero text-center" role="banner" aria-label="Hero section - Accueil Vimana Paris">
+
+
+    
+
+<section class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1 class="hero-title">Vimana Paris</h1>
     <h2 class="hero-subtitle">Agence de conseil et accompagnement pour artistes</h2>
-    <a href="{{ path('app_contact') }}" class="btn-animated">Premier rendez-vous offert</a>
+  </div>
+
+  <!-- AFDAS en dehors de hero-content -->
+  <div class="hero-afdas-wrapper">
     <div class="hero-afdas">Formations financées par l’AFDAS</div>
   </div>
 </section>
 
 
-<!-- SECTION PRÉSENTATION -->
- <section class="vimana-intro"> <div class="vimana-container">
-<h2>Au service des entreprises et des artistes</h2>
- <p> Vimana est bien plus qu’une agence d’événementiel, c’est une agence d’expériences uniques, 
- fusionnant le monde des entreprises avec l’essence vibrante de l’art et de la culture. </p> 
- <p> Notre vocation est de vous accompagner dans l’organisation de vos événements en vous permettant de créer des projets originaux, 
- créatifs, tout en vous offrant un gain de temps considérable. </p>
-  </div>
-  </section>
+<div class="hero-cta" style="position: relative;">
+  <a href="{{ path('app_contact') }}" id="rendezvousBtn" class="btn-animated">
+    Premier rendez-vous offert
+  </a>
 
+  <div id="speechBubble">
+    Oui, tu n’as pas rêvé !<br>
+    Ton rendez-vous de 30 minutes est offert 🤝<br>
+    Explique-moi ton projet !
+  </div>
+</div>
+
+
+<section class="vimana-intro">
+  <div class="vimana-container">
+    <h2>Le partenaire stratégique des porteurs de projets culturels et des artistes</h2>
+
+    <p>
+      Bien plus qu’une agence, un <span class="highlight">accélérateur</span> pour <span class="highlight">artistes</span> et porteurs de projets culturels. <span class="highlight">Outils pratiques</span>, <span class="highlight">conseils stratégiques sur-mesure</span>, partage d’expérience, <span class="highlight">ateliers</span>, aide à la logistique… Tout est mis en œuvre pour guider les talents à chaque étape de leur parcours !
+    </p>
+
+    <p>
+      Que vous soyez au début de votre aventure, prêt à décoller ou déjà au cœur de l’action, <span class="highlight">Vimana</span> est votre partenaire stratégique pour faire de votre projet une réussite. En alliant trois casquettes – créative, pédagogique et business management, nous avons créé les modules d’accompagnement et les formations sur-mesure pour les artistes et entrepreneurs du secteur culturel.
+    </p>
+
+    <p>
+      Avec nos équipes, vous ne travaillez jamais seul : nous sommes là pour construire, structurer et transformer vos idées en <span class="highlight">réalités</span>.
+    </p>
+
+
+   <!-- PARTENAIRE -->
+    <div class="partner-section">
+      <!-- Logo partenaire -->
+      <div class="partner-logo">
+        <img src="assets/images/monahlogo.webp" alt="Logo Monah Academy" style="width:100%; height:100%; object-fit:contain;">
+      </div>
+
+      <!-- Texte et bouton du guide -->
+      <div class="partner-text">
+        <span>Notre partenaire de référence</span>
+        <a href="https://www.monahacademy.com/221cf76b-18ee-4f5a-a6a7-98f9ef122df4" target="_blank" class="partner-link">
+          Télécharger le guide complet
+        </a>
+        <small>Guide complet sur comment poser les bases de son projet.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION formations-->
 
 <section class="formations">
   <div class="container">
-    <h2>Nos Formations professionnelles, financée par l'AFDAS</h2>
+    <h2>Formations certifiantes & accompagnements</h2>
     <p>Découvrez nos différentes formations pour développer vos compétences dans le secteur culturel et artistique.</p>
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -114,21 +161,37 @@
   </div>
 </section>
 
-
 <!-- À PROPOS / VALEURS COMPACTE -->
 <section class="agency agency-grid">
   <div class="container">
     <div class="text-column">
-      <h2>L’art mérite un accompagnement à sa hauteur</h2>
+
+      <h2>L’<span class="highlight">art</span> mérite un accompagnement à sa hauteur</h2>
+
       <p>
-        <strong>Vimana Paris</strong> accompagne les artistes émergents et les porteurs de projets dans le spectacle vivant pour structurer, professionnaliser et développer leurs projets.
+        <strong><span class="highlight">Vimana Paris</span></strong> accompagne 
+        les <span class="highlight">artistes</span> émergents et les porteurs de 
+        <span class="highlight">projets</span> dans le 
+        <span class="highlight">spectacle vivant</span> pour structurer, 
+        professionnaliser et développer leurs projets.
       </p>
+
       <p>
-        Grâce à notre expertise transversale — gestion de projet, production, communication, financement — et notre approche humaine, nous permettons aux artistes de gagner en autonomie et en efficacité.
+        Grâce à notre expertise transversale — gestion de 
+        <span class="highlight">projet</span>, production, communication, 
+        financement — et notre approche humaine, nous permettons aux 
+        <span class="highlight">artistes</span> de gagner en autonomie et en efficacité.
       </p>
-      <p class="quote"><em>Votre talent mérite d’être vu, entendu et soutenu.</em></p>
-      <a href="{{ path('app_register') }}" class="btn">Rejoignez l’aventure Vimana</a>
+
+      <p class="quote">
+        <em>Votre talent mérite d’être vu, entendu et soutenu.</em>
+      </p>
+
+      <a href="{{ path('app_register') }}" class="btn">
+        Rejoignez l’aventure <span class="highlight">Vimana</span>
+      </a>
     </div>
+
     <div class="image-column">
       <img src="{{ asset('assets/images/concert.jpeg') }}" alt="Artiste en création">
     </div>
@@ -136,11 +199,10 @@
 </section>
 
 
-
 <!-- SERVICES PROPOSÉS -->
 <section class="services text-center py-5">
   <div class="container">
-    <h2 class="mb-4 text-primary">Nos Modules d'accompagnement</h2>
+    <h2 class="mb-4 ">Nos Modules d'accompagnement</h2>
     <p class="mb-4">Découvrez nos trois formules pensées pour accompagner chaque étape de vos projets artistiques.</p>
 
     <div class="row g-4 justify-content-center">
@@ -150,8 +212,8 @@
         <div class="service-card rounded h-100">
           <div class="media-wrapper">
             <video autoplay muted loop playsinline>
-              <source src="{{ asset('assets/images/vidéodecouverte.mp4') }}" type="video/mp4">
-              <img src="{{ asset('assets/images/decouverte.jpg') }}" alt="Module Démarrage">
+              <source src="{{ asset('assets/images/card1.mp4') }}" type="video/mp4">
+              <img src="{{ asset('assets/images/card1.webp') }}" alt="Module Démarrage">
             </video>
           </div>
           <div class="card-content">
@@ -169,8 +231,8 @@
         <div class="service-card rounded h-100">
           <div class="media-wrapper">
             <video autoplay muted loop playsinline>
-              <source src="{{ asset('assets/images/vidéodecouverte.mp4') }}" type="video/mp4">
-              <img src="{{ asset('assets/images/decouverte.jpg') }}" alt="Module Développement">
+              <source src="{{ asset('assets/images/card2.mp4') }}" type="video/mp4">
+              <img src="{{ asset('assets/images/card2.webp') }}" alt="Module Développement">
             </video>
           </div>
           <div class="card-content">
@@ -188,8 +250,8 @@
         <div class="service-card rounded h-100">
           <div class="media-wrapper">
             <video autoplay muted loop playsinline>
-              <source src="{{ asset('assets/images/vidéodecouverte.mp4') }}" type="video/mp4">
-              <img src="{{ asset('assets/images/decouverte.jpg') }}" alt="Module Diffusion">
+              <source src="{{ asset('assets/images/card3.mp4') }}" type="video/mp4">
+              <img src="{{ asset('assets/images/IMG-20230926-WA00381(1).webp') }}" alt="Module Diffusion">
             </video>
           </div>
           <div class="card-content">
@@ -209,90 +271,141 @@
 
 
 <!-- CARROUSEL PROJETS RÉALISÉS -->
-<section class="projects py-5 bg-light text-center">
+<section class="projects py-5 text-center">
   <div class="container">
-    <h2 class="mb-4">Quelques projets réalisés</h2>
+    <h2 class="mb-4">Un aperçu de nos réalisations</h2>
     <div id="carouselProjects" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-          <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-            <div class="card" style="width:18rem;">
-              <img src="{{ asset('assets/images/Captureguada.png') }}" class="card-img-top" alt="Projet 1">
-              <div class="card-body">
-                <h5 class="card-title">Événement – Production</h5>
-                <p class="card-text">Organisation d’événements et productions sur-mesure pour valoriser les artistes.</p>
-              </div>
-            </div>
-            <div class="card" style="width:18rem;">
-              <img src="{{ asset('assets/images/livret-pedagogique-1-e1721300969742 (1).jpeg') }}" class="card-img-top" alt="Projet 2">
-              <div class="card-body">
-                <h5 class="card-title">Exposition Pays Mêlé</h5>
-                <p class="card-text">Mise en avant des créations artistiques dans un espace d’exposition unique.</p>
-              </div>
-            </div>
-            <div class="card" style="width:18rem;">
-              <img src="{{ asset('assets/images/Ode-à-la-mémoire-1.jpg') }}" class="card-img-top" alt="Projet 3">
-              <div class="card-body">
-                <h5 class="card-title">Empreintes et résilience</h5>
-                <p class="card-text">Accompagnement complet du projet artistique de l’idée à la diffusion.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-          <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-            <div class="card" style="width:18rem;">
-              <img src="{{ asset('assets/images/Captureguada.png') }}" class="card-img-top" alt="Projet 4">
-              <div class="card-body">
-                <h5 class="card-title">Création artistique</h5>
-                <p class="card-text">Développement de projets artistiques interdisciplinaires.</p>
-              </div>
-            </div>
-            <div class="card" style="width:18rem;">
-              <img src="{{ asset('assets/images/livret-pedagogique-1-e1721300969742 (1).jpeg') }}" class="card-img-top" alt="Projet 5">
-              <div class="card-body">
-                <h5 class="card-title">Atelier participatif</h5>
-                <p class="card-text">Implication du public dans des ateliers créatifs et pédagogiques.</p>
-              </div>
-            </div>
-            <div class="card" style="width:18rem;">
-              <img src="{{ asset('assets/images/Ode-à-la-mémoire-1.jpg') }}" class="card-img-top" alt="Projet 6">
-              <div class="card-body">
-                <h5 class="card-title">Performance visuelle</h5>
-                <p class="card-text">Création de performances audiovisuelles immersives.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Slide 3 -->
-        <div class="carousel-item">
-          <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-            <div class="card" style="width:18rem;">
-              <img src="{{ asset('assets/images/Captureguada.png') }}" class="card-img-top" alt="Projet 7">
-              <div class="card-body">
-                <h5 class="card-title">Scénographie</h5>
-                <p class="card-text">Création de scénographies sur mesure pour expositions et spectacles.</p>
-              </div>
-            </div>
-            <div class="card" style="width:18rem;">
-              <img src="{{ asset('assets/images/livret-pedagogique-1-e1721300969742 (1).jpeg') }}" class="card-img-top" alt="Projet 8">
-              <div class="card-body">
-                <h5 class="card-title">Installation artistique</h5>
-                <p class="card-text">Mise en espace d’œuvres collaboratives contemporaines.</p>
-              </div>
-            </div>
-            <div class="card" style="width:18rem;">
-              <img src="{{ asset('assets/images/Ode-à-la-mémoire-1.jpg') }}" class="card-img-top" alt="Projet 9">
-              <div class="card-body">
-                <h5 class="card-title">Projection immersive</h5>
-                <p class="card-text">Expériences visuelles interactives et immersives.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      
+      <!-- SLIDE 1 -->
+<div class="carousel-item active">
+  <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+
+    <!-- CARD 1 -->
+    <div class="card" style="width:18rem;">
+      <img src="{{ asset('assets/images/20240604_113520-1-scaled (1).jpg') }}" class="card-img-top" alt="Scénographie – Pays Mêlé">
+      <div class="card-body">
+        <h5 class="card-title">Conception scénographie – Pays Mêlé</h5>
+        <p class="card-text">
+          Création de la scénographie et du parcours visiteur de l’exposition Pays Mêlé : Empreintes et résilience.
+        </p>
       </div>
+    </div>
+
+    <!-- CARD 2 -->
+  <div class="card" style="width:18rem;">
+  <img src="{{ asset('assets/images/vieto2.webp') }}" 
+       class="card-img-top" 
+       alt="Concert Elvieto">
+  <div class="card-body">
+    <h5 class="card-title">Production de concert – Elvieto</h5>
+    <p class="card-text">
+      Accompagnement complet pour le premier concert solo d’Elvieto : production, logistique et communication.
+    </p>
+  </div>
+</div>
+
+
+    <!-- CARD 3 -->
+    <div class="card" style="width:18rem;">
+      <img src="{{ asset('assets/images/Logos-des-partenaires-IESA-e1701771032695 (1).webp') }}" class="card-img-top" alt="Modules IESA">
+      <div class="card-body">
+        <h5 class="card-title">Interventions – Mastères IESA</h5>
+        <p class="card-text">
+          Conception et animation de modules pédagogiques : budgétisation, production et structuration d’un projet culturel.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+        <!-- Slide 2 -->
+<div class="carousel-item">
+  <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+
+    <!-- CARD 1 -->
+    <div class="card" style="width:18rem;">
+      <img src="{{ asset('assets/images/Pays mêlé.jpg') }}" class="card-img-top" alt="Médiations culturelles">
+      <div class="card-body">
+        <h5 class="card-title">Médiations culturelles – Pays Mêlé</h5>
+        <p class="card-text">
+          Conception de formats de médiation adaptés aux publics : livret pédagogique interactif,
+          version audio, et parcours hors les murs sous forme de balade littéraire.
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card" style="width:18rem;">
+      <img src="{{ asset('assets/images/image00012-scaled (1).webp') }}" class="card-img-top" alt="Accompagnement Artefac">
+      <div class="card-body">
+        <h5 class="card-title">Accompagnement – Artefac’</h5>
+        <p class="card-text">
+          Suivi de 15 projets créatifs : conseils en administration, structuration, budgétisation,
+          production, diffusion et stratégie globale.
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card" style="width:18rem;">
+      <img src="{{ asset('assets/images/Shooting-P49-3.webp') }}" class="card-img-top" alt="Supports de communication">
+      <div class="card-body">
+        <h5 class="card-title">Supports de communication</h5>
+        <p class="card-text">
+          Création d’une charte graphique, supports de communication, note d’intention et séance photo
+          professionnelle pour un spectacle.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+      
+        
+<!-- Slide 3 -->
+<div class="carousel-item">
+  <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+
+    <!-- CARD 1 -->
+    <div class="card" style="width:18rem;">
+      <img src="{{ asset('assets/images/IMG-20230926-WA00361 (1).webp') }}" class="card-img-top" alt="Articles Projets">
+      <div class="card-body">
+        <h5 class="card-title">Articles Projets – Les Apaches</h5>
+        <p class="card-text">
+          Organisation d’un programme d’éducation artistique et culturelle pour lycéens autour du spectacle Street Art.
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card" style="width:18rem;">
+      <img src="{{ asset('assets/images/UNADJUSTEDNONRAW_thumb_28c5 (1).webp') }}" class="card-img-top" alt="Séminaire FME">
+      <div class="card-body">
+        <h5 class="card-title">Séminaire – FME</h5>
+        <p class="card-text">
+          Journée de séminaire pour réunir les acteurs de la Fondation pour la mémoire de l’esclavage et installer une cohérence dans les actions menées.
+        </p>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card" style="width:18rem;">
+      <img src="{{ asset('assets/images/Conseil-et-conference-Association-Artefac-2022 (1).webp') }}" class="card-img-top" alt="Conseil Artefac’">
+      <div class="card-body">
+        <h5 class="card-title">Conseil & Conférences – Artefac’</h5>
+        <p class="card-text">
+          Conception et animation de formations théoriques et ateliers pratiques pour les bénéficiaires de l’association Artefac’.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
       <!-- Navigation -->
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjects" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
@@ -301,14 +414,31 @@
         <span class="carousel-control-next-icon"></span>
       </button>
     </div>
+
+    <!-- Bouton et lien Instagram sous le carrousel -->
+<div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-4">
+  
+  <!-- Bouton principal -->
+  <a href="#projets" class="btn btn-dark px-4 py-2 d-inline-flex align-items-center" style="border-radius: 8px;">
+    Découvrez nos projets réalisés
+  </a>
+
+  <!-- Bloc Instagram discret -->
+  <a href="https://www.instagram.com/toncompte" target="_blank" class="instagram-link d-flex align-items-center gap-2 text-decoration-none">
+    <i class="bi bi-instagram"></i>
+    Retrouvez tous nos projets sur Instagram
+  </a>
+
+</div>
+
   </div>
 </section>
-
 <!-- SECTION FONDATRICE -->
 <section id="fondatrice" class="founder">
   <div class="container">
     <div class="founder-photo" data-animate="fade-right">
-      <img src="{{ asset('assets/images/portrait-officiel-VANI-RICHARD-1-scaled.webp') }}" alt="Vani Richard, fondatrice de Vimana Paris">
+      <img src="{{ asset('assets/images/portrait-officiel-VANI-RICHARD-1-scaled.webp') }}" 
+           alt="Vani Richard, fondatrice de Vimana Paris">
     </div>
     <div class="founder-bio" data-animate="fade-left">
       <h3 class="section-subtitle">Fondatrice</h3>
@@ -326,43 +456,116 @@
         Son approche repose sur l’écoute, la transmission et la mise en valeur des singularités.  
         Vimana Paris est ainsi un lieu de création, de production et de partage où l’humain reste au cœur de chaque démarche.
       </p>
+
+      <!-- BLOC LIENS ET INSTAGRAM -->
       <div class="founder-links">
         <a href="#presentation" class="btn">En savoir plus</a>
-        <a href="https://www.instagram.com/ton_compte_instagram" target="_blank" class="insta-link" aria-label="Instagram de Vani Richard">
-          <i class="fab fa-instagram"></i>
-        </a>
+
+        <div class="instagram-block">
+          <a href="https://www.instagram.com/ton_compte_instagram" target="_blank" class="insta-link" aria-label="Instagram de Vani Richard">
+            <img src="{{ asset('assets/images/Instagram_Glyph_Gradient.png') }}" alt="Instagram" class="insta-logo">
+          </a>
+          <span>Rejoignez-moi sur Instagram pour plus de contenu en coulisses : projets, photos, vidéos et astuces !</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
+ 
 
 <!-- ========================= -->
-<!-- ILS NOUS FONT CONFIANCE -->
+<!-- ILS NOUS FONT CONFIANCE / MOODBOARD -->
 <!-- ========================= -->
 <section class="trust-section">
-  <div class="container">
-    <h2 class="trust-title">Ils nous font confiance</h2>
+  <div class="trust-container">
+    
+    <h2 class="trust-title">Ils ont choisi Vimana</h2>
 
-    <div class="trust-logos">
-      <img src="assets/images/PaysMele-Exposition-e1721468796137 (1).webp" alt="Entreprise 1">
-      <img src="assets/images/1 (1).webp" alt="Entreprise 2">
-      <img src="assets/images/2 (1).webp" alt="Entreprise 3">
-      <img src="assets/images/2-1.webp" alt="Entreprise 4">
-      <img src="assets/images/Flore-Kitchen-1.webp" alt="Entreprise 5">
-      <img src="assets/images/Onyo-1 (1).webp" alt="Entreprise 6">
-      <img src="assets/images/3 (2).webp" alt="Entreprise 7">
-      <img src="assets/images/8-1.webp" alt="Entreprise 8">
-      <img src="assets/images/Ensemble-Les-Apaches-1.webp" alt="Entreprise 9">
-      <img src="assets/images/Artefac-12042023.webp" alt="Entreprise 10">
-      <img src="assets/images/3-1.webp" alt="Entreprise 11">
-      <img src="assets/images/Logos-des-partenaires (1).webp" alt="Entreprise 12">
-      <img src="assets/images/Logo-PAGE-49.webp" alt="Entreprise 13">
-      <img src="assets/images/2.webp" alt="Entreprise 14">
-      <img src="assets/images/3 (1).webp" alt="Entreprise 15">
-      <img src="assets/images/9-1.webp" alt="Entreprise 16">
-      <img src="assets/images/Logos-des-partenaires-IESA-e1701771032695.webp" alt="Entreprise 17">
+    <div class="trust-grid">
+
+      <!-- LOGOS EXISTANTS -->
+      <div class="trust-item">
+        <img src="assets/images/PaysMele-Exposition-e1721468796137 (1).webp" alt="Entreprise 1">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/1 (1).webp" alt="Entreprise 2">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/2 (1).webp" alt="Entreprise 3">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/2-1.webp" alt="Entreprise 4">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/Flore-Kitchen-1.webp" alt="Entreprise 5">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/Onyo-1 (1).webp" alt="Entreprise 6">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/3 (2).webp" alt="Entreprise 7">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/8-1.webp" alt="Entreprise 8">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/Ensemble-Les-Apaches-1.webp" alt="Entreprise 9">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/Artefac-12042023.webp" alt="Entreprise 10">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/3-1.webp" alt="Entreprise 11">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/Logos-des-partenaires (1).webp" alt="Entreprise 12">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/Logo-PAGE-49.webp" alt="Entreprise 13">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/2.webp" alt="Entreprise 14">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/3 (1).webp" alt="Entreprise 15">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/9-1.webp" alt="Entreprise 16">
+      </div>
+
+      <div class="trust-item">
+        <img src="assets/images/Logos-des-partenaires-IESA-e1701771032695.webp" alt="Entreprise 17">
+      </div>
+
       
+      <div class="trust-item">
+        <img src="assets/images/monahlogo.webp" alt="Entreprise 17">
+      </div>
+
       
+      <div class="trust-item">
+        <img src="assets/images/logoafdas.webp" alt="Entreprise 17">
+      </div>
+
+      <!-- PLACE POUR TES FUTURS LOGOS -->
+      
+      <div class="trust-item placeholder"></div>
+
     </div>
   </div>
 </section>
@@ -373,22 +576,21 @@
 <section class="reviews-section">
   <div class="container">
     <h2 class="reviews-title">Avis de nos clients</h2>
-  
 
     <div class="reviews-grid">
-
-      <!-- Carte d'avis - Reutilisable -->
+      <!-- Carte d'avis pour Alexis -->
       <div class="review-card">
         <div class="review-header">
-          <img src="assets/images/vimana-logo.webp" alt="Photo profil" class="review-avatar">
+          <!-- Avatar placeholder -->
+          <div class="review-avatar placeholder-avatar">A</div>
           <div>
-            <h4>Vimana Paris</h4>
+            <h4>Alexis</h4>
             <span>@vimanaparis</span>
           </div>
         </div>
 
         <p class="review-text">
-          “Un accompagnement exceptionnel ! Une équipe bienveillante, professionnelle et très à l’écoute.”
+          “Metteur en scène et auteur dans la Cie Misqine. Artiste accompagné sur 6 mois.”
         </p>
 
         <a href="https://www.instagram.com/reel/C9VF41PNadj/" target="_blank" class="review-btn">
@@ -396,38 +598,65 @@
         </a>
       </div>
 
-      <!-- Duplique cette card pour 8 avis -->
+      <!-- Carte d'avis pour Malvina -->
       <div class="review-card">
         <div class="review-header">
-          <img src="assets/images/vimana-logo.webp" alt="Photo profil" class="review-avatar">
+          <div class="review-avatar placeholder-avatar">M</div>
           <div>
-            <h4>Vimana Paris</h4>
+            <h4>Malvina</h4>
             <span>@vimanaparis</span>
           </div>
         </div>
+
         <p class="review-text">
-          “Un accompagnement exceptionnel ! Une équipe bienveillante, professionnelle et très à l’écoute.”
+          “Metteuse en scène de la Cie Arlie. Artiste accompagnée sur 6 mois.”
         </p>
+
         <a href="https://www.instagram.com/reel/C9VF41PNadj/" target="_blank" class="review-btn">
           Voir sur Instagram
         </a>
       </div>
 
+      <!-- Carte d'avis pour Adrien -->
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar placeholder-avatar">A</div>
+          <div>
+            <h4>Adrien</h4>
+            <span>@vimanaparis</span>
+          </div>
+        </div>
+
+        <p class="review-text">
+          “Producteur de la Cie Arlie. Artiste accompagné sur 6 mois.”
+        </p>
+
+        <a href="https://www.instagram.com/reel/C87Uxkhg68y/" target="_blank" class="review-btn">
+          Voir sur Instagram
+        </a>
+      </div>
+    </div>
+
+    <!-- Phrase supplémentaire sous les avis -->
+    <div class="reviews-footer text-center mt-4">
+      <p>D’autres avis de nos clients sont disponibles sur <a href="https://www.google.com/maps/place/Vimana+Paris/" target="_blank">Google</a>.</p>
     </div>
 
   </div>
 </section>
 
 
-<!-- CTA FINAL -->
+<!-- CTA FINAL -->  
 <section class="cta text-center py-5">
   <div class="container">
-    <h2>Prêt.e à développer vos projets artistiques ?</h2>
+    <h2>Prêt.e à développer vos projets artistiques avec Vimana ?</h2>
     <div class="mt-3">
-      <a href="#" class="btn btn-light">Contact</a>
-      <a href="#" class="btn btn-outline-light">Prendre rendez-vous</a>
+     
+      <a href="#" class="btn btn-secondary">Prendre rendez-vous</a>
     </div>
   </div>
 </section>
+
+
 
 {% endblock %}

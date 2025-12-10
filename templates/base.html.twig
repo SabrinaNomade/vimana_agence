@@ -33,10 +33,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Open+Sans&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+
 
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
     <!-- Cookie Consent -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
@@ -44,8 +51,8 @@
 
 <body>
 
-<!-- Navigation -->
 <nav class="navbar" role="navigation">
+
     <div class="brand">
         <a href="{{ path('app_home') }}" class="logo">
             <img src="{{ asset('assets/images/logo-v.webp') }}" alt="Logo Vimana Paris – Agence artistique">
@@ -77,6 +84,7 @@
 <div class="navbar-spacer"></div>
 
 
+
 <!-- Bloc Hero -->
 {% block hero %}{% endblock %}
 
@@ -84,6 +92,7 @@
 {% block content %}
     {% block form %}{% endblock %}
 {% endblock %}
+
 
 <!-- Footer complet -->
 <footer class="footer footer-artistic">
@@ -104,15 +113,17 @@
         </ul>
       </div>
 
-      <div class="footer-column">
-        <h4 class="footer-title">Informations</h4>
-        <ul class="footer-list list-unstyled">
-          <li><a href="{{ path('mentions_legales') }}">Mentions légales</a></li>
-          <li><a href="{{ path('politique_confidentialite') }}">Politique de confidentialité</a></li>
-          <li><a href="{{ path('cgu') }}">CGU</a></li>
-          <li><a href="{{ path('app_contact') }}">Contact</a></li>
-        </ul>
-      </div>
+<div class="footer-column">
+  <h4 class="footer-title">Informations</h4>
+  <ul class="footer-list list-unstyled">
+    <li><a href="{{ path('mentions_legales') }}">Mentions légales</a></li>
+    <li><a href="{{ path('politique_confidentialite') }}">Politique de confidentialité</a></li>
+    <li><a href="{{ path('cgu') }}">CGU</a></li>
+    <li><a href="{{ path('app_contact') }}">Contact</a></li>
+    <!-- Ajout de l'email -->
+    <li><a href="mailto:vimanaparis.fr">vimanaparis.fr</a></li>
+  </ul>
+</div>
 
       <div class="footer-column">
         <h4 class="footer-title">VimaNews</h4>
@@ -120,15 +131,31 @@
           <input type="email" id="newsletter-email" name="email" placeholder="Votre email" required>
           <button type="submit">S'inscrire</button>
         </form>
-        <p><a href="{{ path('newsletter') }}">Voir toutes les newsletters</a></p>
+       
       </div>
     </div>
 
+<div class="footer-logo-wrapper">
+  <img src="/assets/images/LOGOS-VIMANA-VF-07102021-SVG-1.png" alt="Vimana Logo" class="footer-logo">
+</div>
+
+
     <div class="footer-bottom text-center">
-      <p>© <span id="current-year"></span> Vimana Paris. Tous droits réservés.</p>
+      <p>© <span id="current-year"></span> Vimana Paris. Tous droits réservés. —  
+      Site développé par Sabrina Berrandou • contact : berrandousabrina@gmail.com</p>
     </div>
   </div>
-</footer>
+
+ 
+
+
+<!-- JS pour l'année -->
+<script>
+  const yearEl = document.getElementById('current-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
+
+
 
 <!-- JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>

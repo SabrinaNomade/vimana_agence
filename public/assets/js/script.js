@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
         typeLetter();
     }
 
+
+
     /* =========================
        🍔 MENU BURGER RESPONSIVE + ANIMATION
     ========================== */
@@ -81,25 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================
        🌈 NAVBAR AU SCROLL (doux)
-    ========================== */
-    const navbar = document.querySelector(".navbar");
-    if (navbar) {
-        let ticking = false;
-        const updateNavbar = () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
-            ticking = false;
-        };
-        window.addEventListener("scroll", () => {
-            if (!ticking) {
-                window.requestAnimationFrame(updateNavbar);
-                ticking = true;
-            }
-        });
-    }
+   
 
     /* =========================
        🔑 FORMULAIRES LOGIN / REGISTER
